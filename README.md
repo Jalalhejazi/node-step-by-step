@@ -1,21 +1,19 @@
 node-step-by-step
 =================
 
-building nodejs step by step (building chat server and later client )
+## The mobile web future architecture
 
+<img src="info00.png" >
 
-## master branch 
+<img src="info01.png" >
 
-write the server side as shown in the image
+<img src="info02.png" >
 
+<img src="info03.png" >
 
-~~~
- //test your server with node 
+<img src="info04.png" >
 
- $ node server.js 
+<img src="info05.png" >
 
-~~~
-
-<img src="info.png" >
-
+<img src="info06.png" >
 
