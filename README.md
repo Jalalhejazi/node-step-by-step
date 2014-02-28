@@ -9,6 +9,8 @@ building nodejs step by step (building chat server and later client )
 building the server side. using the image
 
 
+<img src="info.png" >
+
 <img src="info1.png" >
 
 <img src="info2.png" >

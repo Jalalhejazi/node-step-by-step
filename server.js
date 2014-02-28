@@ -12,11 +12,10 @@ callback = function(req, res) {
 }
 
 //http.createServer(callback).listen(PORT)
-//TODO: writing code using .on('request') event ....
+server = http.createServer()
 
+server.on('request', callback)
 
-
-
-
+server.listen(PORT)
 
 console.log('Server at http://localhost:' + PORT + '/')
