@@ -24,9 +24,7 @@ To read the response data, you should attach a callback to the 'data' and 'end' 
 You will most likely want to store the data somewhere from the 'data' events, then process it as a whole on the 'end' event.
 
 
-
-
-
+<img src="info.png" >
 
 
 
