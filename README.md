@@ -4,199 +4,126 @@ node-step-by-step
 building nodejs step by step (building chat server and later client )
 
 
-## Step10 (FileSystem IO)
+## Step11 (Comet and Socket.io)
 
-The file system functions consist of file I/O and directory I/O functions. 
-
-All of the file system functions offer both 
-synchronous (blocking) and asynchronous (non-blocking) versions. 
-
-The difference between these two is that the synchronous functions (which have “Sync” in their name) return the value directly and prevent Node from executing any code while the I/O operation is being performed:
+<a href="http://socket.io">
+  <img src="info0.png" alt="">
+</a>
 
 
-    var fs = require('fs');
-    var data = fs.readFileSync('./index.html', 'utf8');
-    // wait for the result, then use it
-    console.log(data);
+
+So... do you want to build a chat? Or a real-time multiplayer game?
+
+In order to build a (soft-) real-time app, you need the ability to update information quickly within the end user's browser.
+
+HTTP was not designed to support full two-way communication. However, there are multiple ways in which the client can receive information in real time or almost real time:
+
+Techniques to implement Comet
+
+<strong>Periodic polling </strong> Essentially, you ask the server whether it has new data every n seconds, and idle meanwhile:
+
+    Client: Are we there yet?
+    Server: No
+    Client: [Wait a few seconds]
+    Client: Are we there yet?
+    Server: No
+    Client: [Wait a few seconds]
+    ... (repeat this a lot)
+    Client: Are we there yet?
+    Server: Yes. Here is a message for you.
 
 
-Asynchronous functions return the value as a parameter to a callback given to them:
+The problem with periodic polling is that: 1) it tends to generate a lot of requests and 2) it's not instant - if messages arrive during the time the client is waiting, then those will only be received later.
 
-    var fs = require('fs');
-    fs.readFile('./index.html', 'utf8', function(err, data) {
-      // the data is passed to the callback in the second argument
-      console.log(data);
-    });
+<strong>Long polling</strong> This is similar to periodic polling, except that the server does not return the response immediately. Instead, the response is kept in a pending state until either new data arrives, or the request times out in the browser. Compared to periodic polling, the advantage here is that clients need to make fewer requests (requests are only made again if there is data) and that there is no "idle" timeout between making requests: a new request is made immediately after receiving data.
 
+    Client: Are we there yet?
+    Server: [Wait for ~30 seconds]
+    Server: No
+    Client: Are we there yet?
+    Server: Yes. Here is a message for you.
 
-You should use the asynchronous version in most cases, but in rare cases (e.g. reading configuration files when starting a server) the synchronous version is more appropriate. 
-Note that the asynchronous versions require a bit more thought, since the operations are started immediately and may finish in any order:
-
-    fs.readFile('./file.html', function (err, data) {
-      // ...
-    });
-    fs.readFile('./other.html', function (err, data) {
-      // ..
-    });
-
-These file reads might complete in any order depending on how long it takes to read each file. The simplest solution is to chain the callbacks:
-
-    fs.readFile('./file.html', function (err, data) {
-       // ...
-       fs.readFile('./other.html', function (err, data) {
-          // ...
-       });
-    });
+This approach is slightly better than periodic polling, since messages can be delivered immediately as long as a pending request exists. The server holds on to the request until the timeout triggers or a new message is available, so there will be fewer requests.
 
 
-Recipe: Reading a file (fully buffered)
+However, if you need to send a message to the server from the client while a long polling request is ongoing, a second request has to be made back to the server since the data cannot be sent via the existing (HTTP) request.
 
-    fs.readFile('./index.html', 'utf8', function(err, data) {
-      // the data is passed to the callback in the second argument
-      console.log(data);
-    });
+<strong>Sockets/long-lived connections</strong> WebSockets (and other transports with socket semantics) improve on this further. The client connects once, and then a permanent TCP connection is maintained. Messages can be passed in both ways through this single request. As a conversation:
 
-Recipe: Writing a file (fully buffered)
+    Client: Are we there yet?
+    Server: [Wait for until we're there]
+    Server: Yes. Here is a message for you.
 
-    fs.writeFile('./results.txt', 'Hello World', function(err) {
-      if(err) throw err;
-      console.log('File write completed');
-    });
+If the client needs to send a message to the server, it can send it through the existing connection rather than through a separate request. This efficient and fast, but Websockets are only available in newer, better browsers.
 
 
-Recipe: Reading a directory
+### Socket.io
 
-Reading a directory returns the names of the items (files, directories and others) in it.
+As you can see above, there are several different ways to implement Comet.
 
-    var path = './data/';
-    fs.readdir(path, function (err, files) {
-      if(err) throw err;
-      files.forEach(function(file) {
-        console.log(path+file);
-        fs.stat(path+file, function(err, stats) {
-          console.log(stats);
-        });
-      });
-    });
+Socket.io offers several different transports:
 
-Recipe: Creating and deleting a directory
-
-    fs.mkdir('./newdir', 0666, function(err) {
-      if(err) throw err;
-      console.log('Created newdir');
-      fs.rmdir('./newdir', function(err) {
-        if(err) throw err;
-        console.log('Removed newdir');
-      });
-    });
+* Long polling: XHR-polling (using XMLHttpRequest)
+* Long polling: JSONP polling (using JSON with padding)
+* HTMLFile (forever Iframe for IE)
+* Sockets/long-lived connections:(Websockets over plain TCP)  
 
 
-Recipe: Reading a file and writing to another file
+Ideally, we would like to use the most efficient transport (Websockets) - but fall back to other transports on older browsers. This is what Socket.io does.
 
-    var file = fs.createReadStream('./data/results.txt', {flags: 'r'} );
-    var out = fs.createWriteStream('./data/results2.txt', {flags: 'w'});
-    file.on('data', function(data) {
-      console.log('data', data);
-      out.write(data);
-    });
-    file.on('end', function() {
-      console.log('end');
-      out.end(function() {
-        console.log('Finished writing to file');
-        test.done();
-      });
-    });
+## Writing a basic application
 
+Let's start with a package.json:
 
-Recipe: Appending to a file
-
-    var file = fs.createWriteStream('./data/results.txt', {flags: 'a'} );
-    file.write('HELLO!\n');
-    file.end(function() {
-      test.done();
-    });
-
-
-Example: searching for a file in a directory, traversing recursively
-
-In this example, we will search for a file recursively starting from a given path. The function takes three arguments: a path to search, the name of the file we are looking for, and a callback which is called when the file is found.
-
-Here is the naive version: a bunch of nested callbacks, no thought needed:
-
-    var fs = require('fs');
-
-    function findFile(path, searchFile, callback) {
-      fs.readdir(path, function (err, files) {
-        if(err) { return callback(err); }
-        files.forEach(function(file) {
-          fs.stat(path+'/'+file, function() {
-            if(err) { return callback(err); }
-            if(stats.isFile() && file == searchFile) {
-              callback(undefined, path+'/'+file);
-              }
-            } else if(stats.isDirectory()) {
-              findFile(path+'/'+file, searchFile, callback);
-            }
-          });
-        });
-      });
-    }
-    findFile('./test', 'needle.txt', function(err, path) {
-      if(err) { throw err; }
-      console.log('Found file at: '+path);
-    });
-
-Splitting the function into smaller functions makes it somewhat easier to understand:
-
-    var fs = require('fs');
-
-    function findFile(path, searchFile, callback) {
-      // check for a match, given a stat
-      function isMatch(err, stats) {
-        if(err) { return callback(err); }
-        if(stats.isFile() && file == searchFile) {
-          callback(undefined, path+'/'+file);
-        } else if(stats.isDirectory()) {
-          statDirectory(path+'/'+file);
-        }
-      }
-      // launch the search
-      statDirectory(path, isMatch);
-    }
-
-    // Read and stat a directory
-    function statDirectory(path, callback) {
-      fs.readdir(path, function (err, files) {
-        if(err) { return callback(err); }
-        files.forEach(function(file) {
-          fs.stat(path+'/'+file, callback);
-        });
-      });
-    }
-
-    findFile('./test', 'needle.txt', function(err, path) {
-      if(err) { throw err; }
-      console.log('Found file at: '+path);
-    });
-
-
-### Using a specialized module: async.js
-
-This is a FS-specific library that encapsulates file system operations behind a chainable interface. The findFile() function can be written using async.js like this:
-
-    var async = require('asyncjs');
-    function findFile(path, searchFile, callback) {
-      async.readdir(path)
-        .stat()
-        .filter(function(file) {
-          return file.stat == searchFile;
-        })
-        .toString(callback);
+    {
+      "name": "simpleApp",
+      "description": "Simple Socket.io app",
+      "version": "0.0.1",
+      "main": "server.js",
+      "dependencies": {
+        "socket.io": "0.8.x"
+      },
+      "private": "true"
     }
 
 
+install dependencies (socket.io)
 
-However, even with file I/O, it is possible to come up with solutions that abstract away the details from your main code. In some cases you can find domain specific libraries that provide very conscise ways of expressing your logic (e.g. async.js) - and in other cases you can at least take parts of the process, and move those into a separate module.
+    npm install 
+
+start the server
+
+    node server.js
+
+
+<img src="info.png" alt="">
+
+
+<img src="info1.png" alt="">
+
+<img src="info2.png" alt="">
+
+
+
+
+for more chat examples 
+
+<a href="https://github.com/LearnBoost/socket.io/tree/master/examples">
+  https://github.com/LearnBoost/socket.io/tree/master/examples
+</a> 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
