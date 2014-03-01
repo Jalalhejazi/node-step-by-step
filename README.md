@@ -4,7 +4,7 @@ node-step-by-step
 building nodejs step by step (building chat server and later client )
 
 
-## Step05 (use URL to call differents pages)
+## Step06 (use URL to call different pages)
 
 
 + curl http://localhost:8000/
