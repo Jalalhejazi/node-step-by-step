@@ -6,7 +6,7 @@ building nodejs step by step (building chat server and later client )
 
 ## Step09 (HTTPS server and client)
 
-The HTTPS server and client API is almost identical to the HTTP API, so pretty much everything said about HTTP applies to them. 
+HTTPS server works like the HTTP server.
 
 In fact, the client API is the same, and the HTTPS server only differs in that it needs a certificate file.
 
