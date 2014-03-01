@@ -1,32 +1,33 @@
 http = require('http')
-url = require('url')
-PORT = 8000
+qs = require('querystring');
 
-var server = http.createServer().listen(PORT, 'localhost')
 
-server.on('request', function(req, res) {
+options = {
+    host: 'www.google.com',
+    port: 80,
+    path: '/' + '?' + qs.stringify({
+        q: 'next generation search with nodejs'
+    })
 
-    var url_parts = url.parse(req.url, true)
+}
 
-    switch (url_parts.pathname) {
+req = http.get(options, function(response) {
 
-        case '/':
+    res_data = ''
+    response.on('data', function(chunk) {
+        res_data += chunk;
+    })
 
-        case '/home':
-            res.write('<html><body><h1>home page</h1></body></html>\n')
-            break
-
-        case '/about':
-            res.write('<html><body><h1>about page</h1></body></html>\n')
-            break
-
-        default:
-            res.write('<h1>Unknown path: </h1>\n' + JSON.stringify(url_parts))
-    }
-
-    res.end()
+    response.on('end', function() {
+        console.log(res_data);
+    })
 })
 
-console.log('\n  curl http://localhost:' + PORT + '/')
-console.log('\n  curl http://localhost:' + PORT + '/home')
-console.log('\n  curl http://localhost:' + PORT + '/about')
+req.on('error', function(e) {
+    console.log("Got error: " + e.message)
+})
+
+
+http.createServer(function(req, res) {
+    res.end(res_data)
+}).listen(8000)
