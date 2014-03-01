@@ -1,21 +1,32 @@
-PORT = 8000
-sys = require('sys')
 http = require('http')
+url = require('url')
+PORT = 8000
 
-callback = function(req, res) {
-    res.writeHead(200, {
-        'Content-Type': 'text/plain'
-    })
-    res.write('waiting for any request 	   \n')
-    res.write('Hello World from nodejs     \n')
+var server = http.createServer().listen(PORT, 'localhost')
+
+server.on('request', function(req, res) {
+
+    var url_parts = url.parse(req.url, true)
+
+    switch (url_parts.pathname) {
+
+        case '/':
+
+        case '/home':
+            res.write('<html><body><h1>home page</h1></body></html>\n')
+            break
+
+        case '/about':
+            res.write('<html><body><h1>about page</h1></body></html>\n')
+            break
+
+        default:
+            res.write('<h1>Unknown path: </h1>\n' + JSON.stringify(url_parts))
+    }
+
     res.end()
-}
+})
 
-//http.createServer(callback).listen(PORT)
-server = http.createServer()
-
-server.on('request', callback)
-
-server.listen(PORT)
-
-console.log('Server at http://localhost:' + PORT + '/')
+console.log('\n  curl http://localhost:' + PORT + '/')
+console.log('\n  curl http://localhost:' + PORT + '/home')
+console.log('\n  curl http://localhost:' + PORT + '/about')
