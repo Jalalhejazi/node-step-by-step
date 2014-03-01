@@ -95,6 +95,9 @@ start the server
 
     node server.js
 
+    you can use npm to start if config.json have "main": "server.js"
+    npm start
+
 
 <img src="info.png" alt="">
 
@@ -109,18 +112,6 @@ start the server
 
 
 
-### cool chat examples 
-
-<a href="https://github.com/LearnBoost/socket.io/tree/master/examples">
-  https://github.com/LearnBoost/socket.io/tree/master/examples
-</a> 
-
-
-
-<img src="info4.png" alt="">
-
-
-<img src="info5.png" alt="">
 
 
 
