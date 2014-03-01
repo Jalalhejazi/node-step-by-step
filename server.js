@@ -1,25 +1,23 @@
-http = require('http')
-url = require('url')
+// HTTPS
+var https = require('https');
+var fs = require('fs')
 
 
-server = http.createServer(function(sreq, sres) {
-    url_parts = url.parse(sreq.url);
-    opts = {
-        host: 'google.com',
-        port: 80,
-        path: url_parts.pathname,
-        method: sreq.method,
-        headers: sreq.headers
-    }
+// read in the private key and certificate
+var pk = fs.readFileSync('./privatekey.pem');
+var pc = fs.readFileSync('./certificate.pem');
+var opts = {
+    key: pk,
+    cert: pc
+};
 
-    creq = http.request(opts, function(cres) {
-        sres.writeHead(cres.statusCode, cres.headers);
-        cres.pipe(sres); // pipe client to server response
-    })
 
-    sreq.pipe(creq) // pipe server to client request
-})
+// create the secure server
+var serv = https.createServer(opts, function(req, res) {
+    console.log(req);
+    res.end();
+});
 
-server.listen(8000, '0.0.0.0')
 
-console.log('Proxyserver running on port 8000 -> a proxy to google.com:80 ')
+// listen on port 443  (if not reserved)
+serv.listen(443, '0.0.0.0');
