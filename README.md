@@ -107,7 +107,9 @@ start the server
 
 
 
-for more chat examples 
+
+
+### cool chat examples 
 
 <a href="https://github.com/LearnBoost/socket.io/tree/master/examples">
   https://github.com/LearnBoost/socket.io/tree/master/examples
@@ -115,8 +117,10 @@ for more chat examples
 
 
 
+<img src="info4.png" alt="">
 
 
+<img src="info5.png" alt="">
 
 
 
