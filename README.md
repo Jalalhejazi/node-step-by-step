@@ -16,10 +16,12 @@ building nodejs step by step (building chat server and later client )
 + curl http://localhost:8000/NotFound
 
 
+
 <img src="info2.png" >
 
 <img src="info1.png" >
 
+<img src="info.png" >
 
 
 
