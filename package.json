@@ -1,6 +1,6 @@
 {
-    "name": "DAL",
-    "description": "Data Access Layer Repository",
+    "name": "addressbook",
+    "description": "SPA",
     "version": "0.0.1",
     "main": "server.js",
     "dependencies": {

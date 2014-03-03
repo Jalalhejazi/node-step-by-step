@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="AddressBook">
+  <head>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="addressbook.css">
+    <script src="lib/jquery-2.0.1.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="addressbookAngular.js"></script>
+  </head>
+  <body>
+    <div class="hero-unit"><h1>Address Book with angular</h1></div>
+
+    <select id="nameList" size="12" ng-controller="ListCtrl" ng-model="model.selectedValue"
+      ng-options="id as name for (id, name) in model.names">
+    </select>
+
+    <form name="personForm" class="form-horizontal" ng-controller="PersonCtrl">
+      <div class="control-group">
+        <label class="control-label" for="firstName">First Name</label>
+        <div class="controls">
+          <input id="firstName" type="text" size="15" ng-model="person.firstName"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="lastName">Last Name</label>
+        <div class="controls">
+          <input id="lastName" type="text" size="20" ng-model="person.lastName"/>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="email">Email</label>
+        <div class="controls">
+          <input id="email" name="email" type="text" size="30" ng-model="person.email"
+            ng-pattern="emailRegex"/>
+          <!-- The form and input must both have a name attribute for this to work. -->
+          <span class="error" ng-show="personForm.email.$error.pattern">invalid</span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="phone">Phone</label>
+        <div class="controls">
+          <input id="phone" type="text" size="13" ng-model="person.phone"/>
+        </div>
+      </div>
+      <div id="buttons">
+        <button id="add" class="btn" ng-click="put()">
+          <i class="icon-plus"></i>Add/Update
+        </button>
+        <button id="delete" class="btn" ng-click="del()">
+          <i class="icon-trash"></i>Delete
+        </button>
+      </div>
+    </form>
+  </body>
+</html>

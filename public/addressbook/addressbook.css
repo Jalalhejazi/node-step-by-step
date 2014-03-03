@@ -1,0 +1,25 @@
+body {
+  /*background-color: linen;*/
+  padding-left: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+#buttons {
+  text-align: center;
+}
+
+#nameList {
+  float: left;
+}
+
+.form-horizontal {
+  float: left;
+}
+
+.hero-unit {
+  margin-right: 20px;
+  padding: 30px;
+}
