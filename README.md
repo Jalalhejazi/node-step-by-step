@@ -1,44 +1,31 @@
 node-step-by-step
 =================
 
-building nodejs step by step 
+building nodejs REST-API-repository-design-pattern
 
-
-## Step13 (vejret i Danmark)
-
-<img src="images/app_get.png"> 
-
-
-
+## Step14 (Data Access Layer Repository)
 
     $ npm install
-
-<img src="images/node_modules.png"> 
-
-    
     $ npm start
 
 
-<img src="images/info.png"> 
-
-<img src="images/byvejr_3400_2.png"> 
-
-<img src="images/byvejr_8000_2.png"> 
-
-<img src="images/byvejr_8000_9.png"> 
-
-<img src="images/byvejr_8000_14.png"> 
+<img src="images/npm_start.png" alt="">
 
 
-## HTML5 Mobile WebApp Client
+<img src="images/task_id_2.png" alt="">
 
-<a href="http://supermobile.dk/html5/WebApp.vejret/">html5/WebApp.vejret </a>
+## Opgaven 
+<p>
+Venligst flytte alle kode der hører til Data Access ude af server.js til DAL.js som Modul. 
+<br>
+Du kan læse mere om denne løsning her: 
 
-Vejret er en mobil HTML5 WebApp, baseret på følgende Data Services:
-
-Vejrdata stammer fra Danmarks Meteorologiske Institut (DMI). <br>
-Data om postnumrenes grænser stammer fra Danmarks Administrative Geografiske Inddeling (DAGI), <br>
-som Kort & Matrikelstyrelsens (KMS) har ophavsretten til.
-
+<a href="http://about_node.itacademy.dk/rest-api-repository-design-pattern/">
+    REST-API-repository-design-pattern
+</a>
+    
+<img src="http://supermobile.dk/images/DAL/DAL_require.png" alt="">
+</p>
+ 
 
 

@@ -1,59 +1,183 @@
-var express = require('express'),
-    io = require('socket.io'),
-    Gif = require('./gif').Gif,
-    Gifs = require('./gif').Gifs;
+// DataAccessLayer Repository Pattern
+// using nodejs, express and javascript prototype
 
 
-var app = express(),
-    server = require('http').createServer(app),
-    io = io.listen(server),
-    port = 8080;
+/**
+ * TaskRepository class deals with task persistence
+ */
 
-function buildInternUrl(postnr, dage) {
-    return '/images/' + postnr + '/' + dage + '/byvejr.gif';
+function TaskRepository() {
+    this.tasks = [{
+        taskId: 1,
+        title: 'Learn javascript prototype',
+        description: 'prototype in javascript is Object Oriented',
+        status: 'done'
+
+    }, {
+        taskId: 2,
+        title: 'Learn to think in module',
+        description: 'Modules make your code maintainable',
+        status: 'done'
+    }, {
+        taskId: 3,
+        title: 'DataAccessLayer Repository Pattern',
+        description: 'This implementation is a Proof Of Concept ',
+        status: 'in progress'
+
+    }];
+    this.nextId = 1;
 }
-
-function buildExternUrl(postnr, dage) {
-    var url = "";
-    if (dage === "2") {
-        url = "http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?mode=long";
-    } else if (dage === "9") {
-        url = "http://servlet.dmi.dk/byvejr/servlet/byvejr?tabel=dag3_9";
-    } else if (dage === "14") {
-        url = "http://servlet.dmi.dk/byvejr/servlet/byvejr?tabel=dag10_14";
+/**
+ * Find a task by id
+ * Param: id of the task to find
+ * Returns: the task corresponding to the specified id
+ */
+TaskRepository.prototype.find = function(id) {
+    var task = this.tasks.filter(function(item) {
+        return item.taskId == id;
+    })[0];
+    if (null == task) {
+        throw new Error('task not found');
     }
-    url = url + "&by=" + postnr;
-    return url;
+    return task;
 }
-
-
-io.sockets.on('connection', function(socket) {
-
-    socket.on('byvejr', function(data) {
-        var internUrl = buildInternUrl(data.postnr, data.dage);
-        if (!Gifs[internUrl]) {
-            Gifs[internUrl] = new Gif(buildExternUrl(data.postnr, data.dage), internUrl, 60);
+/**
+ * Find the index of a task
+ * Param: id of the task to find
+ * Returns: the index of the task identified by id
+ */
+TaskRepository.prototype.findIndex = function(id) {
+    var index = null;
+    this.tasks.forEach(function(item, key) {
+        if (item.taskId == id) {
+            index = key;
         }
-        Gifs[internUrl].on(internUrl, function() {
-            socket.emit(internUrl);
-        });
+    });
+    if (null == index) {
+        throw new Error('task not found');
+    }
+    return index;
+}
+/**
+ * Retrieve all tasks
+ * Returns: array of tasks
+ */
+TaskRepository.prototype.findAll = function() {
+    return this.tasks;
+}
+/**
+ * Save a task (create or update)
+ * Param: task the task to save
+ */
+TaskRepository.prototype.save = function(task) {
+    if (task.taskId == null || task.taskId == 0) {
+        task.taskId = this.nextId;
+        this.tasks.push(task);
+        this.nextId++;
+    } else {
+        var index = this.findIndex(task.taskId);
+        this.tasks[index] = task;
+    }
 
+}
+/**
+ * Remove a task
+ * Param: id the of the task to remove
+ */
+TaskRepository.prototype.remove = function(id) {
+    var index = this.findIndex(id);
+    this.tasks.splice(index, 1);
+}
+/**
+ * API
+ */
+var express = require('express');
+var app = express();
+var taskRepository = new TaskRepository();
+app.configure(function() {
+    // used to parse JSON object given in the body request
+    app.use(express.bodyParser());
+});
+/**
+ * HTTP GET /tasks
+ * Returns: the list of tasks in JSON format
+ */
+app.get('/tasks', function(request, response) {
+    response.json({
+        tasks: taskRepository.findAll()
     });
 });
-
-
-app.get('/images/:postnr/:dage/byvejr.gif', function(req, res) {
-    var postnummer = req.params.postnr;
-    var antaldage = req.params.dage;
-    var url = buildExternUrl(postnummer, antaldage);
-    var byvejr = new Gif(url, req.originalUrl, 60);
-    byvejr.getGif(res);
-});
-
-server.listen(port, function() {
-
-    console.log('http://localhost:' + port + '/images/3400/2/byvejr.gif  \n');
-    console.log('http://localhost:' + port + '/images/3400/9/byvejr.gif  \n');
-    console.log('http://localhost:' + port + '/images/3400/14/byvejr.gif \n');
+/**
+ * HTTP GET /tasks/:id
+ * Param: :id is the unique identifier of the task you want to retrieve
+ * Returns: the task with the specified :id in a JSON format
+ * Error: 404 HTTP code if the task doesn't exists
+ */
+app.get('/tasks/:id', function(request, response) {
+    var taskId = request.params.id;
+    try {
+        response.json(taskRepository.find(taskId));
+    } catch (exeception) {
+        response.send(404);
+    }
 
 });
+/**
+ * HTTP POST /tasks/
+ * Body Param: the JSON task you want to create
+ * Returns: 200 HTTP code
+ */
+app.post('/tasks', function(request, response) {
+    var task = request.body;
+    taskRepository.save({
+        title: task.title || 'Default title',
+        description: task.description || 'Default description',
+        dueDate: task.dueDate,
+        status: task.status || 'not completed'
+    });
+    response.send(200);
+});
+/**
+ * HTTP PUT /tasks/
+ * Param: :id the unique identifier of the task you want to update
+ * Body Param: the JSON task you want to update
+ * Returns: 200 HTTP code
+ * Error: 404 HTTP code if the task doesn't exists
+ */
+app.put('/tasks/:id', function(request, response) {
+    var task = request.body;
+    var taskId = request.params.id;
+    try {
+        var persistedTask = taskRepository.find(taskId);
+        taskRepository.save({
+            taskId: persistedTask.taskId,
+            title: task.title || persistedTask.title,
+            description: task.description || persistedTask.description,
+            dueDate: task.dueDate || persistedTask.dueDate,
+            status: task.status || persistedTask.status
+        });
+        response.send(200);
+    } catch (exception) {
+        response.send(404);
+    }
+});
+/**
+ * HTTP PUT /tasks/
+ * Param: :id the unique identifier of the task you want to update
+ * Body Param: the JSON task you want to update
+ * Returns: 200 HTTP code
+ * Error: 404 HTTP code if the task doesn't exists
+ */
+app.delete('/tasks/:id', function(request, response) {
+    try {
+        taskRepository.remove(request.params.id);
+        response.send(200);
+    } catch (exeception) {
+        response.send(404);
+    }
+});
+PORT = 8000;
+app.listen(PORT); //to port on which the express server listen
+
+console.log("listen on http://localhost:" + PORT + "/tasks");
+console.log("listen on http://localhost:" + PORT + "/tasks/1");
