@@ -1,30 +1,66 @@
 node-step-by-step
 =================
 
-building nodejs REST-API-SPA
+building nodejs REST-API-SPA-DB
 
-## Step15_SPA_MemoryDB (addressbook)
+## Step16_SPA_MongoDB (addressbook)
 
 REST DataService backend and Single Page App frontend
+
+database_name: demoDB
+
+<img src="images/getDatabase.png" alt="">
+
 
 
 ## usage: 
 
     $ npm install
+
+
+## start mongodb:
+
+    $ mongod
     $ npm start
 
+## mongo administration
 
-<img src="images/CRUD.png" alt="">
+    $ mongo
 
+<img src="images/shell_mongo.png" alt="">
+
+
+    mongo> help
+
+<img src="images/shell_mongo_help.png" alt="">
+
+    mongo> use demoDb 
+
+    mongo> show collections
+
+    mongo> db.addressbook.findOne()
+
+    mongo> db.addressbook.remove({"firstName": "jalal"})
+
+
+<img src="images/shell_mongo_findOne.png" alt="">
 
 <img src="images/SPA.png" alt="">
 
-## What can you do? 
+## mongodb homepage
 
-Works great, but there are two big problems
+<a href="http://www.mongodb.org/">mongodb.org</a>
 
-    1) All the data is lost when the server is shutdown.
+<a href="http://docs.mongodb.org/manual/core/crud-introduction/">
+    mongodb-crud-introduction
+</a>
 
-    2) If there is more than one client, they only see changes of others after a refresh
 
-Can you solve these 2 problems ??
+<a href="http://docs.mongodb.org/manual/core/import-export/">
+    import-export-json-data
+</a>
+
+
+
+
+
