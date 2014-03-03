@@ -5,6 +5,9 @@ building nodejs REST-API-repository-design-pattern
 
 ## Step14 (Data Access Layer Repository Solution)
 
+<img src="images/module_exports.png" alt="">
+
+
     $ npm install
     $ npm start
 
