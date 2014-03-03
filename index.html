@@ -29,36 +29,138 @@
       <div class="inner clearfix">
         <section id="main-content">
           <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages">
+<span class="octicon octicon-link"></span></a>
+  Grundlæggende git repository og nodejs programmering
+</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>Før du start skal du tage en kopi (klone) af kildekoden fra github</p>
+<p>Dette kan gøres med en terminal (powershell-terminal, DOS-terminal, mac-terminal):</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<pre><code>$ git clone https://github.com/Jalalhejazi/node-step-by-step.git
+$ cd node-step-by-step/
+$ git status
 </code></pre>
+Du ville se denne besked på din terminal: <br>
+<img src="images/git_status.png" alt="">
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
 
 <h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>step00 </h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>
+Dette er meget grundlæggende basis niveau, hvor alle kan være med :-) <br>
+venligst være sikker på, at står på step 00
+
+<pre><code>$ git checkout step00
+</code></pre>  
+
+<img src="images/git_checkout_branch00.png" alt="">
+
+Følg venligst vejledning i README.md <br>
+efter du har lavet ændringer til server.js filen skal du teste med node: 
+<pre><code>node server.js</code></pre>
+Hvis du har nogen fejl, skal de først rettes for at node kan starte. <br>
+
+Efter dine ændringer så er din version af server.js forskellige fra github-versionen <br>
+Du kan altid teste med kommandoen:
+<pre><code>$ git status</code></pre>
+
+<img src="images/git_status_branch00.png" alt="">
+
+<br>
+inden du fortsætter med næste step, skal du første gemme de ændringer du har lavet: 
+<pre><code>$ git commit -am "ok"</code></pre>
+
+Altid sørge for at teste med git status:
+<pre><code>$ git status</code></pre>
+
+<mark>nothing to commit, working directory clean</mark>
+
+<img src="images/git_status_clean.png" alt="">
+
+
+</p>
+<p>
+  Hvor mange branches er der på serveren?   <br>
+  <pre><code>$ git branch -r</code></pre>
+Dette billede kan se muligvis anderledes ud i dag!
+<img src="images/git_branch_remote.png" alt="">
+
+
+Vi er i branch 00: 
+<pre><code>$ git branch</code></pre>
+
+<img src="images/git_branch_00.png" alt="">
+<br>
+
+Nu er det på tide at skifte over til step01
+</p>
+
+
 
 <h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>step01</h3>
+<p>
+   Vi ønsker at downloade en ny version fra serveren:
+   <pre><code>$ git checkout step01</code></pre>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+  <img src="images/git_checkout_branch01.png" alt="">
+
+  <pre><code>$ git status</code></pre>
+
+  <img src="images/git_status_branch01.png" alt="">
+
+  med det samme start node med programmet server.js
+  <pre><code>$ node server.js</code></pre>
+
+  <img src="images/branch_01_node_server.png" alt="">
+
+  Hvis du får en fejl, kan det skyldes at port nummer 8000 er reserveret !! <br>
+  Det kan du ændre på i server.js efter behov <br>
+
+  start din browser med denne link: 
+  <a href="http://localhost:8000">http://localhost:8000</a>
+
+  <img src="images/localhost_p8000.png" alt="">
+  <br>
+  Der er ingen kode ændringer til denne branch <br>
+  Men så har du jo også brugt git <br>
+
+  Det du har lært indtil nu:
+  <ul>
+    <li>
+       git clone
+    </li>
+    <li>
+      git status
+    </li>
+    <li>
+      git branch -r
+    </li>
+    <li>
+      git branch
+    </li>
+    <li>
+      git chechout
+    </li>
+    <li>
+      git commit -am "OK"
+    </li>
+  </ul>
+  
+</p>
+
+
 
 <h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+ 
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+ 
+
+ 
+
+ 
         </section>
 
         <aside id="sidebar">
@@ -66,14 +168,11 @@ $ git checkout gh-pages
             <small>Download</small>
             .zip file
           </a>
-          <a href="https://github.com/Jalalhejazi/node-step-by-step/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
+        
 
-          <p class="repo-owner"><a href="https://github.com/Jalalhejazi/node-step-by-step"></a> is maintained by <a href="https://github.com/Jalalhejazi">Jalalhejazi</a>.</p>
+          <p class="repo-owner"><a href="https://github.com/Jalalhejazi/node-step-by-step"></a> This site is maintained by <a href="https://github.com/Jalalhejazi">Jalalhejazi</a>.</p>
 
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        
         </aside>
       </div>
     </div>
