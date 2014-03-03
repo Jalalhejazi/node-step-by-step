@@ -1,4 +1,4 @@
-node-step-by-step
+[building nodejs step by step (homepage)](http://jalalhejazi.github.io/node-step-by-step/)
 =================
 
-building nodejs step by step (building chat)
+
