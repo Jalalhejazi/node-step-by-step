@@ -1,79 +1,59 @@
-// Setup basic express server
-var express = require('express');
-var app = express();
-var server = require('http').createServer(app);
-var io = require('socket.io').listen(server);
-var port = process.env.PORT || 8888;
+var express = require('express'),
+    io = require('socket.io'),
+    Gif = require('./gif').Gif,
+    Gifs = require('./gif').Gifs;
 
-server.listen(port, function() {
-    console.log('Server listening at port %d', port);
+
+var app = express(),
+    server = require('http').createServer(app),
+    io = io.listen(server),
+    port = 8080;
+
+function buildInternUrl(postnr, dage) {
+    return '/images/' + postnr + '/' + dage + '/byvejr.gif';
+}
+
+function buildExternUrl(postnr, dage) {
+    var url = "";
+    if (dage === "2") {
+        url = "http://servlet.dmi.dk/byvejr/servlet/byvejr_dag1?mode=long";
+    } else if (dage === "9") {
+        url = "http://servlet.dmi.dk/byvejr/servlet/byvejr?tabel=dag3_9";
+    } else if (dage === "14") {
+        url = "http://servlet.dmi.dk/byvejr/servlet/byvejr?tabel=dag10_14";
+    }
+    url = url + "&by=" + postnr;
+    return url;
+}
+
+
+io.sockets.on('connection', function(socket) {
+
+    socket.on('byvejr', function(data) {
+        var internUrl = buildInternUrl(data.postnr, data.dage);
+        if (!Gifs[internUrl]) {
+            Gifs[internUrl] = new Gif(buildExternUrl(data.postnr, data.dage), internUrl, 60);
+        }
+        Gifs[internUrl].on(internUrl, function() {
+            socket.emit(internUrl);
+        });
+
+    });
 });
 
-// Routing
-app.use(express.static(__dirname + '/public'));
 
-// Chatroom
+app.get('/images/:postnr/:dage/byvejr.gif', function(req, res) {
+    var postnummer = req.params.postnr;
+    var antaldage = req.params.dage;
+    var url = buildExternUrl(postnummer, antaldage);
+    var byvejr = new Gif(url, req.originalUrl, 60);
+    byvejr.getGif(res);
+});
 
-// usernames which are currently connected to the chat
-var usernames = {};
-var numUsers = 0;
+server.listen(port, function() {
 
-io.on('connection', function(socket) {
-    var addedUser = false;
+    console.log('http://localhost:' + port + '/images/3400/2/byvejr.gif  \n');
+    console.log('http://localhost:' + port + '/images/3400/9/byvejr.gif  \n');
+    console.log('http://localhost:' + port + '/images/3400/14/byvejr.gif \n');
 
-    // when the client emits 'new message', this listens and executes
-    socket.on('new message', function(data) {
-        // we tell the client to execute 'new message'
-        socket.broadcast.emit('new message', {
-            username: socket.username,
-            message: data
-        });
-    });
-
-    // when the client emits 'add user', this listens and executes
-    socket.on('add user', function(username) {
-        // we store the username in the socket session for this client
-        socket.username = username;
-        // add the client's username to the global list
-        usernames[username] = username;
-        ++numUsers;
-        addedUser = true;
-        socket.emit('login', {
-            numUsers: numUsers
-        });
-        // echo globally (all clients) that a person has connected
-        socket.broadcast.emit('user joined', {
-            username: socket.username,
-            numUsers: numUsers
-        });
-    });
-
-    // when the client emits 'typing', we broadcast it to others
-    socket.on('typing', function() {
-        socket.broadcast.emit('typing', {
-            username: socket.username
-        });
-    });
-
-    // when the client emits 'stop typing', we broadcast it to others
-    socket.on('stop typing', function() {
-        socket.broadcast.emit('stop typing', {
-            username: socket.username
-        });
-    });
-
-    // when the user disconnects.. perform this
-    socket.on('disconnect', function() {
-        // remove the username from global usernames list
-        if (addedUser) {
-            delete usernames[socket.username];
-            --numUsers;
-
-            // echo globally that this client has left
-            socket.broadcast.emit('user left', {
-                username: socket.username,
-                numUsers: numUsers
-            });
-        }
-    });
 });

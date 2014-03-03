@@ -1,12 +1,12 @@
 {
-    "name": "socket.io-chat",
+    "name": "vejret",
+    "description": "WebApp vejret i Danmark",
     "version": "0.0.1",
-    "description": "chat using socket.io",
     "main": "server.js",
-    "private": true,
-    "license": "MIT",
     "dependencies": {
-        "express": "3.4.8",
-        "socket.io": "~0.9.16"
-    }
+        "express": "3.0.0",
+        "request": "2.12.0",
+        "socket.io": "0.9.13"
+    },
+    "private": "true"
 }
