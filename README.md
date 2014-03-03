@@ -18,7 +18,7 @@ database_name: demoDB
     $ npm install
 
 
-## start mongodb:
+## start mongod:
 
     $ mongod
     $ npm start
