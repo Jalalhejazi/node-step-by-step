@@ -1,7 +1,7 @@
 node-step-by-step
 =================
 
-building nodejs REST-API-repository-design-pattern
+building nodejs REST-API-SPA
 
 ## Step15_SPA_MemoryDB (addressbook)
 
