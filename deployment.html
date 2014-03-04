@@ -28,16 +28,106 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages">
-<span class="octicon octicon-link"></span></a>
-  Hosting nodejs på cloud
-</h3>
+                
+                <div>
+                  <h1>Nodejitsu</h1>
+                  <h2>Signing up, and deploying to Nodejitsu</h2>
+                  
+                  <p>
+                    Install the Nodejitsu Package
+                    <pre><code>npm install jitsu -g </code></pre>  
+                  </p>
+
+                  <p>
+                    Register via the command line: <br>
+                    (yes you can sign up via the command line)
+                    <pre><code>jitsu signup </code></pre>
+                  </p>
+                
+                  <p>
+                    You'll get a confirmation email with a command to type in: <br>
+                    After you confirm your email,<br> 
+                    you can login (the confirm command should prompt you to log in)
+                    <pre><code>jitsu users confirm [username] [confirmation-guid]</code></pre>
+                  </p>
+
+                    <p>
+                      If you've already registered, you can login with:
+                      <pre><code>jitsu login</code></pre>
+                    </p>
+
+                    <p>
+                      Change the <code>subdomain</code> value in <mark>package.json</mark> , to reflect the url you want to deploy to:
+                      <pre><code>{
+  "name": "WebAppName",
+  [...],
+  "subdomain": "WebAppName"  <--- this value
+
+}
+</code></pre>
+                    </p>
+
+                    <p>
+                      now deploy:
+                      <pre><code>jitsu deploy</code></pre>
+                    </p>
+
+                </div>
+
+
+                <div>
+                    <h2> vejret_i_Danmark in the cloud </h2>
+                  <p>
+                    <pre><code>jitsu help</code></pre>
+                    <img src="images/cloud_nodejitsu/jitsu-help.png" alt="">
+                    
+                  </p>
+                  
+
+                  <p>
+                    <pre><code>jitsu login</code></pre>
+                    <img src="images/cloud_nodejitsu/jitsu-login.png" alt="">
+                    
+                  </p>
+                  <p>
+                      <pre><code>jitsu deploy</code></pre>
+                        <img src="images/cloud_nodejitsu/jitsu-deploy.png" alt="">
+                  </p>
+
+                  <p>
+
+                      <pre><code>jitsu list</code></pre>
+                      <img src="images/cloud_nodejitsu/jitsu-list.png" alt="">
+
+                  </p>
+
+                    <p>
+                      
+                      <ul>
+                          vejret i København (:postnummer 1000) i de næste 2, 9 og 14 dage: 
+                        <li>
+                            <a href="http://vejret_i_danmark.nodejitsu.com/images/1000/2/byvejr.gif" target="_blank">     http://vejret_i_danmark.nodejitsu.com/images/1000/2/byvejr.gif
+                            </a>
+                        </li>
+                        <li><a href="http://vejret_i_danmark.nodejitsu.com/images/1000/9/byvejr.gif" target="_blank">
+                              http://vejret_i_danmark.nodejitsu.com/images/1000/9/byvejr.gif
+                            </a>
+                        </li>
+                        <li>
+                          <a href="http://vejret_i_danmark.nodejitsu.com/images/1000/14/byvejr.gif" target="_blank">
+                            http://vejret_i_danmark.nodejitsu.com/images/1000/14/byvejr.gif
+                          </a>
+                        </li>
+                      </ul>
+                      <img src="images/cloud_nodejitsu/jitsu-vejret-i-cloud.png" alt="">
+
+                  </p>
+
+                </div>                
 
 
 
 
-<h3>
  
 
  
@@ -48,13 +138,14 @@
         </section>
 
         <aside id="sidebar">
-          <a href="https://github.com/Jalalhejazi/node-step-by-step/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-        
+          
+        <p>
+          <img src="images/cloud.png" alt="">            
+                    
+        </p>
 
-          <p class="repo-owner"><a href="https://github.com/Jalalhejazi/node-step-by-step"></a> This site is maintained by <a href="https://github.com/Jalalhejazi">Jalalhejazi</a>.</p>
+      
+          <p class="repo-owner"><a href="https://github.com/Jalalhejazi/node-step-by-step"></a> This site is maintained by <br><a href="https://github.com/Jalalhejazi">Jalal Hejazi</a>.</p>
 
         
         </aside>
