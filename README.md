@@ -5,7 +5,11 @@ building nodejs REST-API-SPA-mongodb-cloud-hosting
 
 ## Step17_SPA_mongo_cloud (addressbook)
 
-Cloud monog DataService cloud and Single Page App frontend
+Cloud mongoDB and Single Page App frontend
+
+<img src="images/server-js.png" alt="">
+
+
 
 mongodb in cloud <a href="http://modulus.io">modulus.io</a> 
 
