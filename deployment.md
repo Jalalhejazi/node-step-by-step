@@ -109,3 +109,6 @@ List of your websites:
 
 And your app should be up on Azure.
 
+Some references on how to build mongodb in Azure: 
+http://www.windowsazure.com/en-us/documentation/articles/web-sites-nodejs-store-data-mongodb/?fb=da-dk
+
