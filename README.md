@@ -1,66 +1,61 @@
 node-step-by-step
 =================
 
-building nodejs REST-API-SPA-DB
+building nodejs REST-API-SPA-mongodb-cloud-hosting
 
-## Step16_SPA_MongoDB (addressbook)
+## Step17_SPA_mongo_cloud (addressbook)
 
-REST DataService backend and Single Page App frontend
+Cloud monog DataService cloud and Single Page App frontend
 
-database_name: demoDB
+mongodb in cloud <a href="http://modulus.io">modulus.io</a> 
 
-<img src="images/getDatabase.png" alt="">
-
-
-
-## usage: 
-
-    $ npm install
+    mongodb://<user>:<pass>@novus.modulusmongo.net:port/DatabaseName 
 
 
-## start mongod:
 
-    $ mongod
-    $ npm start
-
-## mongo administration
-
-    $ mongo
-
-<img src="images/shell_mongo.png" alt="">
+<img src="images/modulus-db-admin.png" alt="">
 
 
-    mongo> help
 
-<img src="images/shell_mongo_help.png" alt="">
+(Read-Only) persmissions is assigned to the user guest, the password=password 
+<br>
+If you try to make any write operation like PUT, POST, DELETE you get error 500
+<br>
+please create a new account for your own CRUD operations. 
+    
+    mongodb://guest:password@novus.modulusmongo.net:27017/osi4Vovy
 
-    mongo> use demoDb 
+from a Terminal make a connection test with mongo
+    
+    $ mongo novus.modulusmongo.net:27017/osi4Vovy -u guest -p password
 
-    mongo> show collections
+<img src="images/mongo-terminal-guest-user.png" alt="">
 
-    mongo> db.addressbook.findOne()
+    db.addressbook.find().pretty()
 
-    mongo> db.addressbook.remove({"firstName": "jalal"})
+    {
+        "_id" : ObjectId("53177084f0ccd69ac5d91559"),
+        "firstName" : "jalal",
+        "lastName" : "hejazi",
+        "email" : "jalal.hejazi@gmail.com",
+        "phone" : "1111111"
+    }
+    {
+        "_id" : ObjectId("53177e1ef0ccd69ac5d9155f"),
+        "firstName" : "Jacob",
+        "lastName" : "Jacobsen",
+        "email" : "Jacob.Jacobsen@gmail.com",
+        "phone" : "01234345"
+    }
 
 
-<img src="images/shell_mongo_findOne.png" alt="">
 
-<img src="images/SPA.png" alt="">
+<img src="images/cloud-mongo.png" alt="">
 
-## mongodb homepage
 
-<a href="http://www.mongodb.org/">mongodb.org</a>
 
-<a href="http://docs.mongodb.org/manual/core/crud-introduction/">
-    mongodb-crud-introduction
+## Why NoSQL (mongodb) ?
+
+<a href="http://about_node.itacademy.dk/nosql/">
+    http://about_node.itacademy.dk/nosql/
 </a>
-
-
-<a href="http://docs.mongodb.org/manual/core/import-export/">
-    import-export-json-data
-</a>
-
-
-
-
-

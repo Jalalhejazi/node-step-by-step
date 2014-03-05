@@ -1,8 +1,20 @@
 'use strict';
 
+
+// CLOUD HOSTING in modulus.io
+
+//Read-Write persmissions is assigned to user jalal, the password is a secret
+//var remote_address = "mongodb://jalal:*************@novus.modulusmongo.net:27017/osi4Vovy";
+
+//Read-Only persmissions is assigned to user guest, the password is password
+//If you try to make any write operation like PUT, POST, DELETE you get error 500
+//please create a new account for your own CRUD operations. 
+var remote_address = "mongodb://guest:password@novus.modulusmongo.net:27017/osi4Vovy";
+
+
 function getDatabase() {
     var MongoClient = require('mongodb').MongoClient;
-    MongoClient.connect('mongodb://localhost:27017/demoDb', function(err, db) {
+    MongoClient.connect(remote_address, function(err, db) {
         if (err) {
             console.error('failed to connect to database:', err);
         } else {
