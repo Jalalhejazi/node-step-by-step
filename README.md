@@ -21,9 +21,8 @@ building nodejs step by step (building chat server and later client )
 
 <a href="http://en.wikipedia.org/wiki/JSONP">What is JSONP ?</a>
 
-JSONP is a hack around doing cross domain get requests but requires the cooperation of the server to succeed. Unfortunately, you can't request random websites data (client-side) using JSONP. We need to set some config in the express app and do things slightly differently (this isn't very well documented).
-
-<a href="http://expressjs.com/api.html#res.jsonp">expressjs jsonp support</a>
+JSONP is a hack around doing cross domain get requests but requires the cooperation of the server to succeed. Unfortunately, you can't request random websites data (client-side) using JSONP. <br>
+We need to set some config in the express app and do things slightly differently (following the documentation) <a href="http://expressjs.com/api.html#res.jsonp">expressjs jsonp support</a>
 
 
     curl http://localhost:8000/db
