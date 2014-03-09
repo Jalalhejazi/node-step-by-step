@@ -1,5 +1,4 @@
 express = require('express')
-hbs = require('hbs')
 app = express()
 PORT = 8000
 
@@ -7,27 +6,24 @@ PORT = 8000
 
 // Service any Template using html
 app.set('view engine', 'html');
-// Support hbs -> handlebars {{data}} for any data sent from server to client.
-app.engine('html', hbs.__express);
 app.use(express.bodyParser());
 // use the public folder as static pages
 app.use(express.static('public'));
 
 
-app.set("jsonp callback", true)
+//app.set("jsonp callback", true)
 
 //expressjs.com/api.html#res.jsonp
-//app.set('jsonp callback name', 'cb');
+app.set('jsonp callback name', 'success');
 
 
 // ******************** data / db ******************//
 data = {
-    "name": "a human",
-    "address": "home",
-    "planet": "The blue planet",
-    "way": "The milky way",
+    "name": " I'am a human ",
+    "planet": " from the blue planet ",
+    "addresss": " my address is milky way ",
     "Galaxy": ["Ez101", "zx332", "z0"],
-    "universe": "2"
+    "universe": "0001"
 }
 
 // ******************** ROUTES ******************//

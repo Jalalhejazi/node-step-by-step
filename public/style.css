@@ -1,0 +1,16 @@
+#testing{
+	background-color: #ccc; 
+	display:inline-block;
+	font-size: x-large;
+}
+
+
+
+#results{
+	background-color: #ddd; 
+	display:inline-block;
+	font-size: xx-large;
+	position: relative;
+	top: 150px;
+
+}

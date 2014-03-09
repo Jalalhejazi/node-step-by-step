@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <title>jsonp test</title>
+       <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+	<header>
+			<h3>
+				Test02: HTTP-GET with jsonp using script-callback
+			</h3>	
+			<h3>
+				<a href="http://localhost:8000/db/?success=onSuccessCallback">
+					
+					http://localhost:8000/db/?success=onSuccessCallback
+				</a>
+			</h3>
+			
+	</header>
+
+
+	<div id="results">
+		
+	</div>
+    
+
+	
+ 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+ 	<script src="app.js"></script>
+ 	<script src="http://localhost:8000/db/?success=onSuccessCallback"></script>
+    
+</body>

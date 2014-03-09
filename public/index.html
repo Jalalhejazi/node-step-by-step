@@ -2,14 +2,54 @@
 
 <head>
     <title>jsonp test</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div id="test">
-        <a href="#" id="select_link">Test</a>
-    </div>
+	<header>
+			<h3>
+				Cross Domain request with JSONP <br>
+				(define success == callback)
 
+
+			</h3>	
+			<h4>
+				<ul>
+					<li>
+						<a href="/db">/db</a>
+					</li>
+					<li>
+						<a href="/db/?success=?">/db/?success=?</a>
+					</li>
+					<li>
+						<a href="/db/?success=onSuccessCallback">/db/?success=onSuccessCallback</a>
+					</li>
+				</ul>
+
+
+
+			</h4>
+	</header>
+
+    <div id="testing">
+        <p>
+        	<a href="#" id="test">Test01: HTTP-GET with jsonp using jQuery.ajax() </a>
+	
+        </p>
+		<p>
+		<a href="test02.html">Test02: HTTP-GET with jsonp using script-callback </a>	
+			
+		</p>
+        
+	</div>
+
+	
+
+
+	<div id="results">
+		
+	</div>
     
 
 

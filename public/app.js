@@ -1,17 +1,20 @@
+var config = {
+    dataType: 'jsonp',
+    data: "data=yeah",
+    jsonp: 'success',
+    url: '/db?success=onSuccessCallback'
+
+}
+
+var onSuccessCallback = function(data) {
+    console.log("onSuccessCallback: data as jsonp ");
+    console.dir(data);
+
+    $("#results").html(data.name + data.planet + data.addresss);
+}
+
+
 $('#test').click(function(e) {
     e.preventDefault();
-    console.log('select_link clicked');
-
-    $.ajax({
-        dataType: 'jsonp',
-        data: "data=yeah",
-        jsonp: 'callback',
-        url: '/db?callback=?',
-        success: function(data) {
-            console.log('success');
-            console.log(JSON.stringify(data));
-        }
-    });
-
-
+    $.ajax(config);
 });
