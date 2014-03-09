@@ -40,8 +40,8 @@ app.get("/about", function(req, res) {
 })
 
 // HTTP GET / 
-// support jsonp  /?callback=?
-// support jsonp  /?callback=myfunction
+// support jsonp  /?success=?
+// support jsonp  /?success=myfunction
 
 app.get("/db", function(req, res) {
     console.log('query: ' + JSON.stringify(req.query));
