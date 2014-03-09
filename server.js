@@ -1,32 +1,67 @@
-http = require('http')
-url = require('url')
+express = require('express')
+hbs = require('hbs')
+app = express()
 PORT = 8000
 
-var server = http.createServer().listen(PORT, 'localhost')
+// ******************** configurations ******************//
 
-server.on('request', function(req, res) {
+// Service any Template using html
+app.set('view engine', 'html');
+// Support hbs -> handlebars {{data}} for any data sent from server to client.
+app.engine('html', hbs.__express);
+app.use(express.bodyParser());
+// use the public folder as static pages
+app.use(express.static('public'));
 
-    var url_parts = url.parse(req.url, true)
 
-    switch (url_parts.pathname) {
+app.set("jsonp callback", true)
 
-        case '/':
+//expressjs.com/api.html#res.jsonp
+//app.set('jsonp callback name', 'cb');
 
-        case '/home':
-            res.write('<html><body><h1>home page</h1></body></html>\n')
-            break
 
-        case '/about':
-            res.write('<html><body><h1>about page</h1></body></html>\n')
-            break
+// ******************** data / db ******************//
+data = {
+    "name": "a human",
+    "address": "home",
+    "planet": "The blue planet",
+    "way": "The milky way",
+    "Galaxy": ["Ez101", "zx332", "z0"],
+    "universe": "2"
+}
 
-        default:
-            res.write('<h1>Unknown path: </h1>\n' + JSON.stringify(url_parts))
-    }
+// ******************** ROUTES ******************//
 
-    res.end()
+// HTTP GET /about
+app.get("/about", function(req, res) {
+
+    //let the browser know to receive json type
+    res.writeHead(200, {
+        "Content-Type": "application/json"
+    })
+    // Let the response be a JSON object
+    res.end("\n\n" + JSON.stringify(data) + "\n\n")
 })
 
-console.log('\n  curl http://localhost:' + PORT + '/')
-console.log('\n  curl http://localhost:' + PORT + '/home')
-console.log('\n  curl http://localhost:' + PORT + '/about')
+// HTTP GET / 
+// support jsonp  /?callback=?
+// support jsonp  /?callback=myfunction
+
+app.get("/db", function(req, res) {
+    console.log('query: ' + JSON.stringify(req.query));
+
+    console.log('params: ' + JSON.stringify(req.params));
+    console.log('body: ' + JSON.stringify(req.body));
+    console.log('query: ' + JSON.stringify(req.query));
+
+    res.header('Content-type', 'application/json');
+    res.header('Charset', 'utf8');
+
+    res.jsonp(data);
+
+})
+
+
+app.listen(PORT, function() {
+    console.log("REST API is running on port>  " + PORT + "\nsupport jsonp ")
+})

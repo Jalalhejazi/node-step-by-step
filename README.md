@@ -4,24 +4,34 @@ node-step-by-step
 building nodejs step by step (building chat server and later client )
 
 
-## Step06 (use URL to call different pages)
+## Step06_express (Express as middle-ware REST API)
 
-
-+ curl http://localhost:8000/
-
-+ curl http://localhost:8000/home 
-
-+ curl http://localhost:8000/about
-
-+ curl http://localhost:8000/NotFound
+<a href="http://expressjs.com/">
+    ExpressJS    
+</a> is a web application framework that facilitates the rapid and scalable development of node apps.
 
 
 
-<img src="info2.png" >
+##  REST API Command-line Tool <a href="http://en.wikipedia.org/wiki/CURL">cURL</a>
 
-<img src="info1.png" >
+    curl http://localhost:8000/about
 
-<img src="info.png" >
+
+## JSONP to the rescue
+
+<a href="http://en.wikipedia.org/wiki/JSONP">What is JSONP ?</a>
+
+JSONP is a hack around doing cross domain get requests but requires the cooperation of the server to succeed. Unfortunately, you can't request random websites data (client-side) using JSONP. We need to set some config in the express app and do things slightly differently (this isn't very well documented).
+
+<a href="http://expressjs.com/api.html#res.jsonp">expressjs jsonp support</a>
+
+
+    curl http://localhost:8000/db
+
+
+
+
+ 
 
 
 
