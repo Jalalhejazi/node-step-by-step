@@ -1,6 +1,7 @@
 
 var express = require('express') ;
-var db = require('./db') ;
+var db = require('./routes/db') ;
+var about = require('./routes/about') ;
 var app = express() ;
 var PORT = 8000 ;
 
@@ -23,15 +24,7 @@ app.set('jsonp callback name', 'success');
 // ******************** ROUTES ******************//
 
 // HTTP GET /about
-app.get("/about", function(req, res) {
-
-    //let the browser know to receive json type
-    res.writeHead(200, {
-        "Content-Type": "application/json"
-    })
-    // Let the response be a JSON object
-    res.end("\n\n" + JSON.stringify(db.data) + "\n\n")
-});
+app.get("/about", about.getInfo);
 
 // HTTP GET / 
 // support jsonp  /?success=?
