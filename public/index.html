@@ -7,52 +7,51 @@
 
 <body>
 
-	<header>
-			<h3>
-				Cross Domain request with JSONP <br>
-				(define success == callback)
+<header>
+    <h3>
+        Cross Domain request with JSONP <br>
+        (define success == callback)
 
 
-			</h3>	
-			<h4>
-				<ul>
-					<li>
-						<a href="/db">/db</a>
-					</li>
-					<li>
-						<a href="/db/?success=?">/db/?success=?</a>
-					</li>
-					<li>
-						<a href="/db/?success=onSuccessCallback">/db/?success=onSuccessCallback</a>
-					</li>
-				</ul>
+    </h3>
+    <h4>
+        <ul>
+            <li>
+                <a href="/db">/db</a>
+            </li>
+            <li>
+                <a href="/db/?success=?">/db/?success=?</a>
+            </li>
+            <li>
+                <a href="/db/?success=onSuccessCallback">/db/?success=onSuccessCallback</a>
+            </li>
+            <li><a href="/about">/about</a></li>
+            <li><a href="/session">/session</a></li>
+        </ul>
 
 
+    </h4>
+</header>
 
-			</h4>
-	</header>
+<div id="testing">
+    <p>
+        <a href="#" id="test">Test01: HTTP-GET with jsonp using jQuery.ajax() </a>
 
-    <div id="testing">
-        <p>
-        	<a href="#" id="test">Test01: HTTP-GET with jsonp using jQuery.ajax() </a>
-	
-        </p>
-		<p>
-		<a href="test02.html">Test02: HTTP-GET with jsonp using script-callback </a>	
-			
-		</p>
-        
-	</div>
+    </p>
 
-	
+    <p>
+        <a href="test02.html">Test02: HTTP-GET with jsonp using script-callback </a>
+
+    </p>
+
+</div>
 
 
-	<div id="results">
-		
-	</div>
-    
+<div id="results">
+
+</div>
 
 
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="app.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="app.js"></script>
 </body>
