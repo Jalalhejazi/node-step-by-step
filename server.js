@@ -1,7 +1,10 @@
 
 var express = require('express') ;
+
+// routes
 var db = require('./routes/db') ;
 var about = require('./routes/about') ;
+
 var app = express() ;
 var PORT = 8000 ;
 
