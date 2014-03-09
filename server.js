@@ -19,9 +19,9 @@ app.set('jsonp callback name', 'success');
 
 // ******************** data / db ******************//
 data = {
-    "name": " I'am a human ",
-    "planet": " from the blue planet ",
-    "addresss": " my address is milky way ",
+    "name": " I'am a human like you ",
+    "planet": " from the blue planet. ",
+    "addresss": " My address is milky way ",
     "Galaxy": ["Ez101", "zx332", "z0"],
     "universe": "0001"
 }

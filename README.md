@@ -12,6 +12,20 @@ building nodejs step by step (building chat server and later client )
 
 
 
+## how to use nodemon 
+
+install -globally nodemonitor (edit and watch)
+
+    npm install nodemon -g
+
+Now you can use the nodemon instead of node 
+
+    nodemon server.js    
+
+
+
+
+
 ###  REST API Command-line Tool <a href="http://en.wikipedia.org/wiki/CURL">cURL</a>
 
     curl http://localhost:8000/about
