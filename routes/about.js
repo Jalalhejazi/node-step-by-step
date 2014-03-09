@@ -21,3 +21,13 @@ exports.getSession = function (req, res) {
     res.send("<h1>" + req.session.name + "</h1>");
 
 }
+
+
+exports.single = function (req, res) {
+
+    res.send("<h1> calling singleInterceptor only for this route  </h1>");
+
+}
+
+
+

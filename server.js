@@ -56,6 +56,10 @@ app.get("/about", about.getInfo);
 app.get("/clear", about.clearCookie);
 
 
+// HTTP GET /single -> calling singleInterceptor
+app.get("/single", singleInterceptor, about.single);
+
+
 // HTTP GET / 
 // support jsonp  /?success=?
 // support jsonp  /?success=myfunction
