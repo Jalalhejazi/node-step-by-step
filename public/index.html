@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>jsonp test</title>
+    <title>basic-authentication</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -9,43 +9,24 @@
 
 <header>
     <h3>
-        Cross Domain request with JSONP <br>
-        (define success == callback)
+        basic-authentication <br>
+        (you must login to get access to the /db section)
 
 
     </h3>
+
+    <pre><code>app.use(express.basicAuth('username', 'password'));</code></pre>
+
     <h4>
         <ul>
             <li>
                 <a href="/db">/db</a>
             </li>
-            <li>
-                <a href="/db/?success=?">/db/?success=?</a>
-            </li>
-            <li>
-                <a href="/db/?success=onSuccessCallback">/db/?success=onSuccessCallback</a>
-            </li>
-           
-           
         </ul>
 
 
     </h4>
 </header>
-
-<div id="testing">
-    <p>
-        <a href="#" id="test">Test01: HTTP-GET with jsonp using jQuery.ajax() </a>
-
-    </p>
-
-    <p>
-        <a href="test02.html">Test02: HTTP-GET with jsonp using script-callback </a>
-
-    </p>
-
-</div>
-
 
 <div id="results" >
 

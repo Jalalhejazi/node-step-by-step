@@ -23,7 +23,16 @@ app.configure(function(){
     //expressjs.com/api.html#res.jsonp
     app.set('jsonp callback name', 'success');
 
+    // middleware basic-authentications
+    //authentication using basic user+pass act like interceptor but using validation function callback
+    app.use(express.basicAuth(function(user,pass){
+        //TODO: call any database to validate the user and pass
+        return user === pass ;
+
+    }))
+
 })
+
 
 
 
