@@ -2,20 +2,21 @@ node-step-by-step
 =================
 
 
-## Step20_middleware_validation
+## Step21_middleware_sessions
+
+<img src="public/interceptors.jpg" alt="">
 
 
-## middleware-interceptors (validations)
-
-<a href="http://expressjs.com/3x/api.html#middleware">
-    ExpressJS middleware   
-</a> 
 
 
-		 app.use(globalInterceptor);
+## middleware-session (authentications)
+
+<img src="public/auth-sequence.png" alt="">
 
 
-<img src="public/images/interceptors.jpg" alt="">
+
+
+
 
  
 
