@@ -126,5 +126,5 @@ app.post('/login', function(req, res){
 
 // app start
 app.listen(PORT, function() {
-    console.log("Authentication Server is running on port>  " + PORT + "\nsupport jsonp ")
+    console.log("Authentication Server is running on port>  " + PORT + "\n ")
 });
