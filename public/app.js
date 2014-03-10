@@ -1,6 +1,5 @@
 var config = {
     dataType: 'jsonp',
-    data: "data=yeah",
     jsonp: 'success',
     url: '/db?success=onSuccessCallback'
 

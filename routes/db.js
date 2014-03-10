@@ -10,11 +10,6 @@ var data =  {
 
 var getData = function(req,res){
     console.log('query: ' + JSON.stringify(req.query));
-
-    console.log('params: ' + JSON.stringify(req.params));
-    console.log('body: ' + JSON.stringify(req.body));
-    console.log('query: ' + JSON.stringify(req.query));
-
     res.header('Content-type', 'application/json');
     res.header('Charset', 'utf8');
 
