@@ -18,6 +18,8 @@ node-step-by-step
 
 some quick research 
 
+https://github.com/Jalalhejazi/hashids.node.js
+
 https://www.npmjs.org/package/crypto
 
 https://www.npmjs.org/package/password-hash
