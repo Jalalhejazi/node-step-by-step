@@ -22,7 +22,7 @@ https://github.com/Jalalhejazi/hashids.node.js
 
 https://www.npmjs.org/package/crypto
 
-https://www.npmjs.org/package/password-hash
+https://www.npmjs.org/package/bcryptjs
 
 https://crackstation.net/hashing-security.htm
 
