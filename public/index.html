@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>basic-authentication</title>
+    <title>middleware-valiation</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -9,31 +9,32 @@
 
 <header>
     <h3>
-        basic-authentication <br>
-        (you must login to get access to the /db section)
-
+        middleware-interceptors <br>
+        (validation using global/local-interceptors)
+        <img src="images/interceptors.jpg" alt="">
 
     </h3>
 
-    <pre><code>app.use(express.basicAuth('username', 'password'));</code></pre>
+
 
     <h4>
-        <ul>
-            <li>
-                <a href="/db">/db</a>
-            </li>
-        </ul>
+        
+     <p>
+        <a href="/db">
+             <pre><code>global validation (all routes)</code></pre>
+        </a>
+         
+     </p>     
 
-
+     <p>
+        <a href="/validate">
+             <pre><code>single validation custom routes '/validate'</code></pre>
+        </a>
+         
+     </p>       
+        
     </h4>
 </header>
 
-<div id="results" >
 
-</div>
-
-
-
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="app.js"></script>
 </body>

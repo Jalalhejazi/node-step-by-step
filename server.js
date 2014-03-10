@@ -9,6 +9,17 @@ var db = require('./routes/db') ;
 var app = express() ;
 var PORT = 8000 ;
 
+// ******************** Define any middleware interceptors (proxy/validation)  ******************//
+
+var globalInterceptor = function (req, res, next) {
+    console.log(util.format('global interceptor is calling %s', req.path));
+    next();
+}
+
+var singleInterceptor = function (req, res, next) {
+    console.log(util.format('single interceptor is %s', req.path));
+    next();
+}
 
 // ******************** configurations ******************//
 
@@ -23,13 +34,8 @@ app.configure(function(){
     //expressjs.com/api.html#res.jsonp
     app.set('jsonp callback name', 'success');
 
-    // middleware basic-authentications
-    //authentication using basic user+pass act like interceptor but using validation function callback
-    app.use(express.basicAuth(function(user,pass){
-        //TODO: call any database to validate the user and pass
-        return user === pass ;
-
-    }))
+    // this globalInterceptor is called on every route
+    app.use(globalInterceptor);
 
 })
 
@@ -38,11 +44,11 @@ app.configure(function(){
 
 // ******************** ROUTES ******************//
 
-// HTTP GET / 
-// support jsonp  /?success=?
-// support jsonp  /?success=myfunction
-
+// -> calling globalInterceptor
 app.get("/db", db.getData );
+
+// -> calling singleInterceptor
+app.get("/validate", singleInterceptor, db.validate);
 
 
 app.listen(PORT, function() {

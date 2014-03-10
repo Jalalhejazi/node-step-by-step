@@ -17,5 +17,14 @@ var getData = function(req,res){
 }
 
 
+var validate = function(req,res){
+    res.header('Content-type', 'application/json');
+    res.header('Charset', 'utf8');
+
+    res.jsonp(data);
+}
+
+
 exports.data = data ;
-exports.getData = getData;
+exports.getData   = getData;
+exports.validate  = validate;
