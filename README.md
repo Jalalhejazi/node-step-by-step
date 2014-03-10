@@ -9,21 +9,6 @@ node-step-by-step
 </a> (API RESTfull server) is a web application framework that facilitates the rapid and scalable development of node apps.
 
 
-
-## how to use nodemon 
-
-install -globally nodemonitor (edit and watch)
-
-    npm install nodemon -g
-
-Now you can use the nodemon instead of node 
-
-    nodemon server.js    
-
-
-
-
-
 ###  REST API Command-line Tool <a href="http://en.wikipedia.org/wiki/CURL">cURL</a>
 
     curl http://localhost:8000/about
