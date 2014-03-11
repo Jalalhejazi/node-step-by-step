@@ -24,6 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
+app.use(express.bodyParser());
 app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
     app.use(express.errorHandler());
@@ -32,6 +33,7 @@ if ('development' == app.get('env')) {
 // REST API 
 app.get('/', routes.index);
 app.get('/userlist', user.userlist(db));
+app.post('/userlist/clear', user.userlistClearAll(db));
 app.post('/adduser', user.adduser(db));
 app.delete('/deleteuser/:id', user.deleteuser(db));
 

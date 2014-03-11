@@ -10,9 +10,9 @@ exports.adduser = function(db) {
         db.collection('userlist').insert(req.body, function(err, result) {
             res.send(
                 (err === null) ? {
-                    msg: ''
+                    msg: result
                 } : {
-                    msg: err
+                    msg: 'error: ' + err
                 }
             );
         });
@@ -23,7 +23,21 @@ exports.deleteuser = function(db) {
         var userToDelete = req.params.id;
         db.collection('userlist').removeById(userToDelete, function(err, result) {
             res.send((result === 1) ? {
-                msg: ''
+                msg: result
+            } : {
+                msg: 'error: ' + err
+            });
+        });
+    }
+};
+
+
+// Clear all data from userlist
+exports.userlistClearAll = function(db) {
+    return function(req, res) {
+        db.collection('userlist').remove({}, function(err, result) {
+            res.send((result === 1) ? {
+                msg: result
             } : {
                 msg: 'error: ' + err
             });
