@@ -2,37 +2,30 @@ node-step-by-step
 =================
 
 
-## Step21_middleware_sessions
+## step22_express_mongo_user_administration
 
-<img src="public/interceptors.jpg" alt="">
+    npm install 
+    npm start   
 
+<img src="public/images/npm-start.png" alt="">
 
+start mongo-server then browse to port 8000
 
+    mongod 
 
-## middleware-session (authentications)
+    > use step22_express_mongo_user_administration
 
-<img src="public/auth-sequence.png" alt="">
+<img src="public/images/mongo-show-dbs.png" alt="">
 
+<img src="public/images/mongo-findOne.png" alt="">
 
-## hashing and salting password
+<img src="public/images/mongo-find-pretty.png" alt="">
 
-some quick research 
+<img src="public/images/mongo-insert.png" alt="">
 
-https://github.com/Jalalhejazi/hashids.node.js
+<img src="public/images/mongo-remove.png" alt="">
 
-https://www.npmjs.org/package/crypto
+<img src="public/images/code-user.png" alt="">
 
-https://www.npmjs.org/package/bcryptjs
-
-https://crackstation.net/hashing-security.htm
-
-
-
- 
-
-
-
-
-
-
+<img src="public/images/code-server.png" alt="">
 
