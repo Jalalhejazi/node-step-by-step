@@ -1,0 +1,33 @@
+<template name="homeTemplate">
+    <div class="container">
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="text-center">home</h1>
+                <br>
+                <h2 class="text-center">
+                	{{title}}
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+    <code>
+
+    	Session.get("myName")
+    	<br> 
+    	 Session.set("myName", "Jalal Hejazi 2014")
+
+    </code>
+		<br>
+		<br>
+
+       <h1>
+            <span class="label label-success">
+                {{myName}}
+            </span>
+        </h1>
+    </div>
+
+</template>

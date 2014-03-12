@@ -1,0 +1,30 @@
+<template name="aboutTemplate">
+
+    <div class="container">
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="text-center">{{title}}</h1>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+		<code>
+		data stammer fra //rest.supermobile.dk/opgaver.json
+		</code>
+
+        {{#each opgave}}
+	        <h1>
+	            <span class="label label-default">
+	                {{todo}}
+	            </span>
+	        </h1>
+        {{/each}}
+    </div>
+
+
+</template>

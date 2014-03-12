@@ -2,57 +2,49 @@ node-step-by-step
 =================
 
 
-## step24_meteor_mongodb
+## step24_meteor_structure
 
+To reset your mongodb run this code
 
-## meteor run
-    
-    > meteor run
-
-## mongodb run 
-mens meteor er i run mode start mongodb med en anden terminal med command
-
-    > meteor mongo
-
-mongodb commands du har har brug for
-    
-    meteor:PRIMARY> help            // alt hvad du har brug for er i help
-    
-    meteor:PRIMARY> cls             // clear 
-
-    meteor:PRIMARY> show collections
-
-    meteor:PRIMARY> db.kurser.find()
-
-    meteor:PRIMARY> db.kurser.find().count()
-
-    meteor:PRIMARY> db.kurser.findOne({ "title" : "new kursus 01 from serverside"}) 
-
-    meteor:PRIMARY> db.kurser.insert({test:'nyt kursus på vej'})
-
-    meteor:PRIMARY> var ID = db.kurser.findOne({title:'nyt kursus på vej'})._id
-    
-    meteor:PRIMARY> db.kurser.remove(ID)  // sletter kursus med ID 
-
-    meteor:PRIMARY> ID                    // forventer null   
-
-    meteor:PRIMARY> ctrl + c              // exit mongo-terminal 
+    > meteor reset
 
 
 
-## create mongodb collections 
+## Multi Page App - structure
 
-<img src="images/meteor-collections.png" alt="">
+Single Page App eller Multi Page App begge muligheder er op til udvikleren i meteor app. 
 
-## insert data in mongodb collections
-<img src="images/meteor-create-data.png" alt="">
+jeg har valgt at brug Multi Page App vha. client/lib/router.js
 
-## browser
+alle kode der hører til browseren er under mappen /client
+
+alle kode der hører til serveren er under mappen /server
+
+alle kode der hører til databasen er under mappen /Model
+
+forklaring stammer fra http://jalal.meteor.com/#structuringyourapp
+
+* Files in directories named lib are loaded first.
+
+* Files that match main.* are loaded after everything else.
+
+* Files in subdirectories are loaded before files in parent directories, so that files in the deepest subdirectory are loaded first (after lib), and files in the root directory are loaded last (other than main.*).
+
+* Within a directory, files are loaded in alphabetical order by filename.
+
+
+
+## browse
+
+
+    > meteor run   
 
 <img src="images/localhost-3000.png" alt="">
 
-## browser console
+## get remote data
+<img src="images/localhost-about.png" alt="">
 
-<img src="images/console.png" alt="">
+## client-side jQuery.ajax()
 
+<img src="images/code-about.png" alt="">
 
