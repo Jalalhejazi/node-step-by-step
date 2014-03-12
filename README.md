@@ -2,7 +2,7 @@ node-step-by-step
 =================
 
 
-## step24_meteor_structure
+## step25_meteor_structure
 
 To reset your mongodb run this code
 
