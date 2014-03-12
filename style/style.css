@@ -1,0 +1,23 @@
+/* CSS declarations go here */
+
+@import	url('//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css');
+
+.blue{
+	background-color:lightblue;
+}
+
+
+.green{
+	background-color:lightgreen;
+}
+
+.yellow{
+	background-color:lightyellow;
+}
+
+.template {
+	display:inline-block;
+	width:300px;
+	height:300px;
+	border:1px dotted #ccc;
+}
