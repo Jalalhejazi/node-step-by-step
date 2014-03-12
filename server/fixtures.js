@@ -1,3 +1,36 @@
+// **************************************************************//
+//              opgaver data fra rest.supermobile.dk/opgaver
+// **************************************************************//
+
+// Server-side HTTP.get() hente data fra servicen ved opstart 
+// kun første/én gang
+
+
+if (opgaver.find().count() === 0) {
+
+    HTTP.get('http://rest.supermobile.dk/opgaver/.json', function(error, success) {
+
+        // Der bliver oprettet alle rækker fra servicen til mongodb  
+        // underscore.js  _.map() -> svarer til Foreach() loop
+
+        _.map(success.data.opgaver, function(opgaven) {
+            console.log("Første gang fixtures.js> HTTP.get from rest.supermobile.dk/opgaver > onSuccess> " + opgaven.todo);
+
+            //sende hele opgaven til mongodb as-is  :-) 
+            opgaver.insert(opgaven);
+
+        });
+
+    });
+};
+
+
+
+
+// **************************************************************//
+//              kurser test data
+// **************************************************************//
+
 if (kurser.find().count() === 0) {
     kurser.insert({
         title: 'learn how to code server+client with javaScript',
