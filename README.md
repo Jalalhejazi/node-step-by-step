@@ -32,22 +32,6 @@ forklaring stammer fra http://jalal.meteor.com/#structuringyourapp
 
 * Within a directory, files are loaded in alphabetical order by filename.
 
-
-
-## browse
-
-
-    > meteor run   
-
-<img src="images/localhost-3000.png" alt="">
-
-## get remote data
-<img src="images/localhost-about.png" alt="">
-
-## client-side jQuery.ajax()
-
-<img src="images/code-about.png" alt="">
-
 ## meteor project structures
 
     /projectName
@@ -72,4 +56,20 @@ forklaring stammer fra http://jalal.meteor.com/#structuringyourapp
             /server            - [Server only]
                 /publications  - Publish Mongo collections
                 /startup       - Code to run when the server starts
+
+
+
+## browse
+
+
+    > meteor run   
+
+<img src="images/localhost-3000.png" alt="">
+
+## get remote data
+<img src="images/localhost-about.png" alt="">
+
+## client-side jQuery.ajax()
+
+<img src="images/code-about.png" alt="">
 
