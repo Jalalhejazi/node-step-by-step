@@ -11,6 +11,9 @@ lib-cov
 *.njsproj
 
 
+bundle
+bundle.tgz
+
 pids
 logs
 results
