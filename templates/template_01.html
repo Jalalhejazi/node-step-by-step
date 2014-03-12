@@ -1,6 +1,10 @@
 <template name="test01">
-	<h3>test01 template</h3>
-	<mark>
-		{{data01}}
-	</mark>
+	<h3>posts template</h3>
+	
+		 {{#each posts}}
+			<li>
+				{{title}}
+			</li>
+		 {{/each}}
+	
 </template>

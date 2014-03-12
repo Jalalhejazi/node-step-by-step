@@ -1,6 +1,9 @@
 <template name="test02">
-	<h3>test02 template</h3>
-	<mark>
-		{{data02}}
-	</mark>
+	<h3>kurser template</h3>
+	 
+	 {{#each kurser}}
+		<li>
+			{{title}}
+		</li>
+	 {{/each}}
 </template>
