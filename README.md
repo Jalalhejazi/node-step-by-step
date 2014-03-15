@@ -41,3 +41,17 @@ inspiration from: <a href="http://nodejs.org/api/process.html#process_process_en
 * DOS ref.: <a href="http://ss64.com/nt/syntax-variables.html">Environment_variables in DOS</a>
 
 * Linux ref.: <a href="https://wiki.archlinux.org/index.php/Environment_variables">Environment_variables in Linux and Mac</a>
+
+
+
+## How to ask if PORT is FREE or RESERVED
+
+<img src="isPortTaken.png" alt="">
+
+
+
+## How to find any FREE PORT? 
+
+<img src="module-portfinder.png" alt="">
+
+
