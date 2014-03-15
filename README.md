@@ -33,6 +33,9 @@ står på den ny bundle mappe
 
 Nu er du klar til at køre, men så skal du start din mongodb, hvis ikke den køre som en service: 
 
+    mongod --dbpath=D:\mongodb --logpath=D:\mongodb\log.txt --install
+    
+
     mongod
 
 Nu er du klar til at start med node main.js <br>
