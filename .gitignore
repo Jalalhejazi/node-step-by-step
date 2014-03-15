@@ -9,11 +9,14 @@ lib-cov
 *.idea
 *.DS_Store
 *.njsproj
+*.tgz
+*.tar
+*.zip
+*.7z
+*.rar
 
 
 bundle
-bundle.tgz
-
 pids
 logs
 results
