@@ -101,7 +101,7 @@ Serveren skal ikke sende html+data som man gøre i php og asp.net
 
 
 
-Sidst og ikke mindst: <a href="http://meteor.itacademy.dk">Her er et linkt til min privat hosting på meteor.ITacademy.dk </a>
+Sidst men ikke mindst: <a href="http://meteor.itacademy.dk">Her er et linkt til min privat hosting på meteor.ITacademy.dk </a>
 <br>
 
 
