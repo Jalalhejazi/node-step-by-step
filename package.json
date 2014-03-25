@@ -1,0 +1,17 @@
+{
+  "name": "express_mongo_user_administration",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "3.4.8",
+    "jade": "*",
+    "mongodb": "*",
+    "mongoskin": "*",
+    "mocha": "~1.17.1",
+    "expect.js": "~0.3.1",
+    "superagent": "~0.17.0"
+  }
+}
