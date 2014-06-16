@@ -124,6 +124,6 @@ var server = http.createServer(function (req, res) {
 
 server.listen(8005, function(){
 
-  console.log("running timeServer for node05.hejazi.dk/api/parsetime?iso=2014-08-01T16:10:15.000Z ");
+  console.log("running timeServer for /api/parsetime?iso=2014-08-01T16:10:15.000Z ");
 
 })
