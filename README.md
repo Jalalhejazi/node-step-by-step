@@ -8,6 +8,7 @@ node-step-by-step
 
 /api/unixtime?iso=2014-08-01T16:10:15.000Z
 
+
 ```
 {
 hour: 18,
@@ -15,4 +16,16 @@ minute: 10,
 second: 15
 }
 ```
+
+
+
+```
+{
+unixtime: 1406909415000
+}
+```
+
+
+Shows ISO-time  and unixtime
+
 
