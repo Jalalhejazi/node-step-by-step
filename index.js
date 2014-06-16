@@ -50,8 +50,7 @@ var server = http.createServer(function (req, res) {
 })
 
 
-// ask the user for port:
-// node server.js 1234
+// ask the user for port: node server.js 1234
 
 //server.listen(Number(process.argv[2]), function(){
 //  console.log("running timeServer ....");
