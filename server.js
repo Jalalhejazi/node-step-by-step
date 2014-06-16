@@ -17,6 +17,9 @@ The JSON response should contain only 'hour', 'minute' and 'second' properties. 
 }
 ```
 
+ /api/unixtime?iso=2014-08-01T00:00:00.000Z
+
+
 Add second endpoint for the path '/api/unixtime' which accepts the same query string but returns UNIX epoch time under the property 'unixtime'. For example:
 
 ```json
@@ -78,9 +81,9 @@ var server = http.createServer(function (req, res) {
   var parsedUrl = url.parse(req.url, true)
   var iso       = new Date(parsedUrl.query.iso)
 
-  console.log('\n toUTCString: '    + iso.toUTCString());
-  console.log('\n toISOString: '    + iso.toISOString());
-  console.log('\n toLocaleString: ' + iso.toLocaleString() +'\n');
+//  console.log('\n toUTCString: '    + iso.toUTCString());
+//  console.log('\n toISOString: '    + iso.toISOString());
+//  console.log('\n toLocaleString: ' + iso.toLocaleString() +'\n');
 
   var time =iso
 
@@ -106,6 +109,10 @@ var server = http.createServer(function (req, res) {
 
 
 //server.listen(Number('8000'))
+
+
+// ask the user for port: 
+// node server.js 1234 
 
 server.listen(Number(process.argv[2]), function(){
   console.log("running timeServer ....");
