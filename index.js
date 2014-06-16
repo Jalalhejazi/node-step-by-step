@@ -67,6 +67,7 @@ function parsetime (time) {
     console.log(time)
 
   return {
+   info: 'this is what you get when using ISO-standard',
     hour:   time.getHours(),
     minute: time.getMinutes(),
     second: time.getSeconds(),
@@ -74,7 +75,10 @@ function parsetime (time) {
 }
 
 function unixtime (time) {
-  return { unixtime : time.getTime() }
+  return { 
+		info     : 'this is unixtime (counting seconds back to 1970 :-)',
+		unixtime : time.getTime() 
+	}
 }
 
 var server = http.createServer(function (req, res) {
