@@ -31,7 +31,15 @@ var server = http.createServer(function (req, res) {
 
   var result
 
-  if (/^\/api\/parsetime/.test(req.url))
+  if (/^\/api/.test(req.url))
+	result = { 
+	 info1: "you can call me like this /api/parsetime?iso=2014-08-01T16:10:15.000Z  ",
+	 info2: "or call me like this /api/unixtime?iso=2014-08-01T16:10:15.000Z  "
+	 } 
+	
+
+
+  else if (/^\/api\/parsetime/.test(req.url))
     result = parsetime(time)
 
   else if (/^\/api\/unixtime/.test(req.url))
