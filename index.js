@@ -31,6 +31,7 @@ var server = http.createServer(function (req, res) {
 
   var result
 
+/*
  if (/^\//.test(req.url))
         result = {
 	  usage: "this is a JSON-timeServer: use this /api  "
@@ -42,9 +43,9 @@ var server = http.createServer(function (req, res) {
 	 info2: "or call me like this /api/unixtime?iso=2014-08-01T16:10:15.000Z  "
 	 } 
 
+*/
 
-
-  else if (/^\/api\/parsetime/.test(req.url))
+  if (/^\/api\/parsetime/.test(req.url))
     result = parsetime(time)
 
   else if (/^\/api\/unixtime/.test(req.url))
