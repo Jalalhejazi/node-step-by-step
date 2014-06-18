@@ -4,15 +4,15 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
+
     <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 
 
-    
-    
+
+
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -32,14 +32,14 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          <h3>
+          <h1 class="step">
 <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages">
 <span class="octicon octicon-link"></span></a>
-  Grundlæggende git repository og nodejs programmering
-</h3>
+  Grundlæggende git repository viden
+</h1>
 
 <p>Før du starter skal du tage en kopi (klone) af kildekoden fra github</p>
-<p>Dette kan gøres med en terminal (powershell-terminal, DOS-terminal, mac-terminal):</p>
+<p>Dette kan gøres med en terminal (powershell-terminal, DOS-terminal, mac-terminal, linux-shell):</p>
 
 <pre><code>$ git clone https://github.com/Jalalhejazi/node-step-by-step.git
 $ cd node-step-by-step/
@@ -49,20 +49,20 @@ Du ville se denne besked på din terminal: <br>
 <img src="images/git_status.png" alt="">
 
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>step00 </h3>
+<h1 class="step">
+<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>step00 </h1>
 
 <p>
 Dette er meget grundlæggende basis niveau, hvor alle kan være med :-) <br>
 venligst være sikker på, at står på step 00
 
 <pre><code>$ git checkout step00
-</code></pre>  
+</code></pre>
 
 <img src="images/git_checkout_branch00.png" alt="">
 
 Følg venligst vejledning i README.md <br>
-efter du har lavet ændringer til server.js filen skal du teste med node: 
+efter du har lavet ændringer til server.js filen skal du teste med node:
 <pre><code>node server.js</code></pre>
 Hvis du har nogen fejl, skal de først rettes for at node kan starte. <br>
 
@@ -73,7 +73,7 @@ Du kan altid teste med kommandoen:
 <img src="images/git_status_branch00.png" alt="">
 
 <br>
-inden du fortsætter med næste step, skal du første gemme de ændringer du har lavet: 
+inden du fortsætter med næste step, skal du første gemme de ændringer du har lavet:
 <pre><code>$ git commit -am "ok"</code></pre>
 
 Altid sørge for at teste med git status:
@@ -92,7 +92,7 @@ Dette billede kan se muligvis anderledes ud i dag!
 <img src="images/git_branch_remote.png" alt="">
 
 
-Vi er i branch 00: 
+Vi er i branch 00:
 <pre><code>$ git branch</code></pre>
 
 <img src="images/git_branch_00.png" alt="">
@@ -103,10 +103,20 @@ Nu er det på tide at skifte over til step01
 
 
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>step01</h3>
+<h1 class="step">
+<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>step01</h1>
 <p>
-   Vi ønsker at downloade en ny version fra serveren:
+
+  Vi ønsker at skifte til en anden git branch, men arbejde i samme mappe: <br>
+  først må vi gemme de ænderinger vi har lavet så vi kan finde det igen: <br>
+  Det kan git klare for os på 2 måder: enten bruger man <br>
+  kun midlertidig ændringer, den hurtigste for nu :-)
+  <pre><code>$ git stash </code></pre>
+  eller du kan gemme dine ændringer i git repo med message -m "..."
+  <pre><code>$ git commit -m "..." </code></pre>
+
+
+   Vi ønsker nu at downloade en ny version fra en anden branch:
    <pre><code>$ git checkout step01</code></pre>
 
   <img src="images/git_checkout_branch01.png" alt="">
@@ -123,7 +133,7 @@ Nu er det på tide at skifte over til step01
   Hvis du får en fejl, kan det skyldes at port nummer 8000 er reserveret !! <br>
   Det kan du ændre på i server.js efter behov <br>
 
-  start din browser med denne link: 
+  start din browser med denne link:
   <a href="http://localhost:8000">http://localhost:8000</a>
 
   <img src="images/localhost_p8000.png" alt="">
@@ -151,20 +161,194 @@ Nu er det på tide at skifte over til step01
     <li>
       git commit -am "OK"
     </li>
+    <li>
+      git stash
+    </li>
+    <li>
+      <a href="https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf" target="_blank">
+        Git reference: github-git-cheat-sheet.pdf
+      </a>
+    </li>
   </ul>
-  
+
 </p>
 
 
 
-<h3>
- 
 
- 
 
- 
 
- 
+<h1 class="step">
+<a href="https://github.com/Jalalhejazi/node-step-by-step/tree/step02">
+  Step 02  (using callback-function)
+</a>
+</h1>
+callback-function som gøre javaScript noget særligt: Non-Blocking IO
+<pre>
+  <code>
+    $ git  checkout step02
+  </code>
+</pre>
+
+
+<h1 class="step">
+<a href="https://github.com/Jalalhejazi/node-step-by-step/tree/step03">
+   Step 03  (Port configuration)
+</a>
+</h1>
+  port konfiguration best practices på win, mac og linux
+<pre>
+  <code>
+    $ git  checkout step03
+  </code>
+</pre>
+
+
+
+<h1 class="step">
+<a href="https://github.com/Jalalhejazi/node-step-by-step/tree/step04">
+   Step 04  (the request event)
+</a>
+</h1>
+  Non-blocking request event-loop <br>
+  request from user
+<pre>
+  <code>
+    $ git  checkout step04
+  </code>
+</pre>
+
+
+
+<h1 class="step">
+<a href="https://github.com/Jalalhejazi/node-step-by-step/tree/step05">
+   Step 05  (the response event)
+</a>
+</h1>
+  Non-blocking request/response event-loop <br>
+  response as text
+
+<pre>
+  <code>
+    $ git  checkout step05
+  </code>
+</pre>
+
+
+
+
+<h1 class="step">
+<a href="https://github.com/Jalalhejazi/node-step-by-step/tree/step06">
+   Step 06  (URL request)
+</a>
+</h1>
+  hvordan håndtere vi forskellige url-request (URL-path)
+
+<pre>
+  <code>
+    localhost /
+    localhost /home
+    localhost /about
+  </code>
+</pre>
+
+
+
+
+<h1 class="step">
+<a href="https://github.com/Jalalhejazi/node-step-by-step/tree/step07">
+   Step 07  (http.get)
+</a>
+</h1>
+  hvordan håndtere vi HTTP client API
+<pre>
+  <code>
+    host: the domain or IP address of the server
+    port: the port (e.g. 80 for HTTP)
+    path: the request path, including the query string (e.g. 'index.html?section=footer')
+  </code>
+</pre>
+
+
+
+
+
+<h1 class="step">
+<a href="https://github.com/Jalalhejazi/node-step-by-step/tree/step08">
+   Step 08  (http proxy)
+</a>
+</h1>
+  hvordan laver vi en simple HTTP Proxy server
+<pre>
+  <code>
+    http://localhost:8000/ to be proxied to Google Search
+  </code>
+</pre>
+
+
+
+
+<h1 class="step">
+<a href="https://github.com/Jalalhejazi/node-step-by-step/tree/step10">
+   Step 10  (Filesystem IO)
+</a>
+</h1>
+  hvordan kan vi læse og skrive til filsystemet (sync og Async)
+<pre>
+  <code>
+    var fs = require('fs')
+
+    var data = fs.readFileSync('./index.html', 'utf8');
+               fs.readFile('./index.html', 'utf8', function(){ ... });
+
+               fs.writeFile()
+               fs.readdir()
+               fs.mkdir()
+
+  </code>
+</pre>
+
+
+
+
+
+
+<h1 class="step">
+<a href="https://github.com/Jalalhejazi/node-step-by-step/tree/step11">
+   Step 11 + 12 (Socket.IO)
+</a>
+</h1>
+  realtime bi-directional messages <br>
+  simple chat cient/server med socket.io
+<pre>
+  <code>
+    var io  = require('socket.io')
+
+  </code>
+</pre>
+
+
+
+
+
+<h1 class="step">
+<a href="https://github.com/Jalalhejazi/node-step-by-step/tree/step13_vejret_i_Danmark">
+   Step 13 (vejret i Danmark)
+</a>
+</h1>
+   vejret i DK med socket.io og images som kommer fra DMI <br>
+   find vejret ude fra postnummer og antal dage 2, 9 og 14 dage i fremtiden.
+<pre>
+  <code>
+    http://localhost:8080/images/3400/2/byvejr.gif
+    http://localhost:8080/images/3400/9/byvejr.gif
+    http://localhost:8080/images/3400/14/byvejr.gif
+
+  </code>
+</pre>
+
+
+
         </section>
 
         <aside id="sidebar">
@@ -172,20 +356,22 @@ Nu er det på tide at skifte over til step01
             <small>Download</small>
             .zip file
           </a>
-        
+
            <a href="deployment.html" class="hosting-button">
-              <img src="images/cloud.png" alt="">  
+              <img src="images/cloud.png" alt="">
           </a>
 
 
           <p class="repo-owner"><a href="https://github.com/Jalalhejazi/node-step-by-step"></a> This site is maintained by <br> <a href="https://github.com/Jalalhejazi">Jalal Hejazi</a>.</p>
-          
-           
-        
+
+
+
         </aside>
       </div>
     </div>
 
-  
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="javascripts/main.js"></script>
+
   </body>
 </html>
