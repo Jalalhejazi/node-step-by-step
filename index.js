@@ -1,6 +1,15 @@
 var http = require('http')
 var url = require('url')
 
+
+function about () {
+  return {
+   about   :'Date and Time parsing is good starting point in any language :-) ',
+   library :' Moment.js is a cool javascript date library for parsing, validating, manipulating, and formatting dates. '
+  }
+}
+
+
 function parsetime (time) {
     console.log(time)
 
@@ -31,21 +40,10 @@ var server = http.createServer(function (req, res) {
 
   var result
 
-/*
- if (/^\//.test(req.url))
-        result = {
-	  usage: "this is a JSON-timeServer: use this /api  "
-         }
+  if (/^\/api\/about/.test(req.url))
+    result = about()
 
-  else if (/^\/api/.test(req.url))
-	result = { 
-	 info1: "you can call me like this /api/parsetime?iso=2014-08-01T16:10:15.000Z  ",
-	 info2: "or call me like this /api/unixtime?iso=2014-08-01T16:10:15.000Z  "
-	 } 
-
-*/
-
-  if (/^\/api\/parsetime/.test(req.url))
+  else if (/^\/api\/parsetime/.test(req.url))
     result = parsetime(time)
 
   else if (/^\/api\/unixtime/.test(req.url))
