@@ -10,3 +10,9 @@ building nodejs REST-API-repository-design-pattern
     $ npm start
 
 
+## Data Access Layer solution to solve the problem with JSON-DB for fileSystem like mongoDB
+
+<a  href="https://github.com/Jalalhejazi/jsonfs"> json_file_system (Data Access Layer Solution) </a>
+<br>
+<img src="https://raw.githubusercontent.com/Jalalhejazi/jsonfs/master/images/db.save.png" />
+
