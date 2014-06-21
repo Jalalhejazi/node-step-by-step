@@ -3,29 +3,31 @@ node-step-by-step
 
 building nodejs REST-API-repository-design-pattern
 
-## Step14 (Data Access Layer Repository Solution)
+## Step14 (Solution using DAL/jsonfs.js integration)
 
-<img src="images/module_exports.png" alt="">
+<img src="images/console.png" alt="">
 
 
     $ npm install
-    $ npm start
+
+## Solution
+
++ refactor the DAL from before to use a real DB from json.
++ use the ./DAL/jsonfs.js as DAL Repository for CRUD.
++ use the ./db/tasks.json as JSON-Database.
 
 
-<img src="images/npm_start.png" alt="">
+
+		// initialize the json database with this code:
+		node setup_db.js
+
+		// run the app using this code:
+		node server.js
 
 
-<img src="images/task_id_2.png" alt="">
 
-## Solution 
-<p>
-<img src="http://supermobile.dk/images/DAL/DAL_require.png" alt="">
 
-<a href="http://about_node.itacademy.dk/rest-api-repository-design-pattern/">
-    REST-API-repository-design-pattern
-</a>
-    
-</p>
- 
+
+
 
 

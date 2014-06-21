@@ -1,4 +1,3 @@
-// http://node.supermobile.dk/rest-api-repository-design-pattern/
 // DataAccessLayer Repository Pattern
 // using nodejs, express and javascript prototype
 

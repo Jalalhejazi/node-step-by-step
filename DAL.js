@@ -1,30 +1,15 @@
-// http://node.supermobile.dk/rest-api-repository-design-pattern/
 // DataAccessLayer Repository Pattern
 // using nodejs, express and javascript prototype
 // exported as module
 module.exports = TaskRepository;
 
-//TaskRepository class Constructor 
+//TaskRepository class Constructor
 function TaskRepository() {
 
-    this.tasks = [{
-        taskId: 1,
-        title: 'Learn javascript prototype',
-        description: 'prototype in javascript is Object Oriented',
-        status: 'done'
+    var db = require('./DAL/jsonfs.js');
+    db.connect('./db',['tasks']);
 
-    }, {
-        taskId: 2,
-        title: 'Learn to think in module',
-        description: 'Modules make your code maintainable',
-        status: 'done'
-    }, {
-        taskId: 3,
-        title: 'DataAccessLayer Repository Pattern',
-        description: 'This implementation is a Proof Of Concept ',
-        status: 'in progress'
-
-    }];
+    this.tasks = db.tasks.find();
 
     this.nextId = 1;
 }
