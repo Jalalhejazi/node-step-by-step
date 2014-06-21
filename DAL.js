@@ -9,9 +9,7 @@ function TaskRepository() {
     var db = require('./DAL/jsonfs.js');
     db.connect('./db',['tasks']);
 
-    this.tasks = db.tasks.find();
-
-    this.nextId = 1;
+    this.db = db ;
 }
 
 /**
@@ -20,51 +18,62 @@ function TaskRepository() {
  * Returns: the task corresponding to the specified id
  */
 TaskRepository.prototype.find = function(id) {
-    var task = this.tasks.filter(function(item) {
-        return item.taskId == id;
-    })[0];
+    var task = this.db.tasks.findOne({taskId:id});
     if (null == task) {
         throw new Error('task not found');
     }
     return task;
 }
-/**
- * Find the index of a task
- * Param: id of the task to find
- * Returns: the index of the task identified by id
- */
-TaskRepository.prototype.findIndex = function(id) {
-    var index = null;
-    this.tasks.forEach(function(item, key) {
-        if (item.taskId == id) {
-            index = key;
-        }
-    });
-    if (null == index) {
-        throw new Error('task not found');
-    }
-    return index;
-}
+
 /**
  * Retrieve all tasks
  * Returns: array of tasks
  */
 TaskRepository.prototype.findAll = function() {
-    return this.tasks;
+    return this.db.tasks.find();
 }
 /**
  * Save a task (create or update)
  * Param: task the task to save
  */
 TaskRepository.prototype.save = function(task) {
-    if (task.taskId == null || task.taskId == 0) {
-        task.taskId = this.nextId;
-        this.tasks.push(task);
-        this.nextId++;
-    } else {
-        var index = this.findIndex(task.taskId);
-        this.tasks[index] = task;
-    }
+
+    // VERSION 03 (UPSERT= UPDATE AND INSERT)
+    //////////////////////////////////////////////////////////
+    var options = {multi:false,upsert:true};
+
+    this.db.tasks.update({taskId:task.taskId},task,options);
+
+    console.log("TaskRepository.prototype.save: UPSERT ");
+
+
+
+    // VERSION 02
+    //////////////////////////////////////////////////////////
+    // if (task.taskId == null || task.taskId == 0) {
+    //     console.log("TaskRepository.prototype.save INSERT");
+    //     this.db.tasks.save(task);
+
+    // }else{
+    //     console.log("TaskRepository.prototype.save UPDATE");
+    //     this.db.tasks.update({taskId:task.taskId},task);
+    // };
+
+
+
+    // VERSION 01
+    //////////////////////////////////////////////////////////
+    // if (task.taskId == null || task.taskId == 0) {
+    //     task.taskId = this.nextId;
+    //     this.tasks.push(task);
+    //     this.nextId++;
+    // } else {
+    //     var index = this.findIndex(task.taskId);
+    //     this.tasks[index] = task;
+    // }
+
+
+
 
 }
 /**
@@ -72,6 +81,17 @@ TaskRepository.prototype.save = function(task) {
  * Param: id the of the task to remove
  */
 TaskRepository.prototype.remove = function(id) {
-    var index = this.findIndex(id);
-    this.tasks.splice(index, 1);
+
+    // VERSION 02
+    // remove all matched. Default - multi = true
+    //////////////////////////////////////////////////////////
+    this.db.tasks.remove({taskId:id},true);
+
+    console.log("TaskRepository.prototype.remove: multi matches ");
+
+
+    // VERSION 01
+    //////////////////////////////////////////////////////////
+    // var index = this.findIndex(id);
+    // this.tasks.splice(index, 1);
 }

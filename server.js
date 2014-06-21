@@ -42,12 +42,7 @@ app.get('/tasks/:id', function(request, response) {
  */
 app.post('/tasks', function(request, response) {
     var task = request.body;
-    taskRepository.save({
-        title: task.title || 'Default title',
-        description: task.description || 'Default description',
-        dueDate: task.dueDate,
-        status: task.status || 'not completed'
-    });
+    taskRepository.save(task);
     response.send(200);
 });
 /**
