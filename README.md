@@ -22,10 +22,12 @@ building nodejs REST-API-repository-design-pattern
 
 
 		// initialize the json database:
-		node setup_db.js
+		$ node setup_db.js
 
 		// run the app:
-		node server.js
+		$ npm start
+		or
+		$ node server.js
 
 
 ### HTTP.GET
