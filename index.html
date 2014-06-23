@@ -41,7 +41,7 @@
 <p>Før du starter skal du tage en kopi (klone) af kildekoden fra github</p>
 <p>Dette kan gøres med en terminal (powershell-terminal, DOS-terminal, mac-terminal, linux-shell):</p>
 
-<pre><code title="use  --single-branch for only one branch ">$ git clone https://github.com/Jalalhejazi/node-step-by-step.git 
+<pre><code title="use  --single-branch for only one branch ">$ git clone https://github.com/Jalalhejazi/node-step-by-step.git
 $ cd node-step-by-step/
 $ git status
 </code></pre>
@@ -346,6 +346,101 @@ callback-function som gøre javaScript noget særligt: Non-Blocking IO
 
   </code>
 </pre>
+
+
+
+<h1 class="step">
+<a href="https://github.com/Jalalhejazi/node-step-by-step/tree/step14_DataAccessLayer_opgave">
+   Step14 (DAL pattern)
+</a>
+</h1>
+  Data Access Layer har ansvaret for at læse og skrive til en eller flere database-Engines <br>
+  Her kan databasen ændres fra en bestemt format til en anden uden at servicen opdager det <br>
+  Man kan opgradere/skallere database-engine fra en database provider til anden, det såkaldte:
+<code>Refactoring</code>
+   <br>
+   <br>
+  <div>
+    <img src="images/node_DAL.png" alt="">
+    <br>
+    <br>
+  </div>
+
+  Database-engines kan være en eller flere typer: <br>
+  <ul>
+    <li>memory databaser</li>
+    <li>json-filer kan opfattes som database-engine (FS-DB)</li>
+    <li>JSON databaser (NoSQL-DB)</li>
+    <li>database som SQLServer, Oracle, DB2 (SQL-DB) </li>
+    <li>Databaser kan også være en Service (Service-DB)</li>
+  </ul>
+  <br>
+
+  <div>
+    <img src="images/DAL.jpg">
+  <br>
+  <br>
+
+  </div>
+
+
+  <li>
+    <a href="https://github.com/Jalalhejazi/node-step-by-step/tree/step14_DAL_using_json_file_system">
+     step14 (DAL med jsonfs modulet)
+  </a>
+
+  </li>
+  <li>
+    <a href="https://github.com/Jalalhejazi/node-step-by-step/tree/step14_DAL_using_json_file_system_v2">
+       step14 (DAL med jsonfs modulet + express API)
+    </a>
+
+  </li>
+
+
+
+<h1 class="step">
+<a href="https://github.com/Jalalhejazi/node-step-by-step/tree/step15_SPA_MemoryDB">
+   Step15 (MemoryDB)
+</a>
+</h1>
+REST DataService backend and Single Page App frontend
+<br>
+
+<pre>
+<code>
+  var book = {}; // just storing data in memory
+
+  app.get('/addressbook/list', list);
+  app.get('/addressbook/:id', get);
+  app.put('/addressbook/:id', put);
+</code>
+</pre>
+
+
+
+<h1 class="step">
+<a href="https://github.com/Jalalhejazi/node-step-by-step/tree/step16_SPA_MongoDB">
+   Step16 (MongoDB)
+</a>
+</h1>
+NoSQL JSON-Database
+<pre>
+<code>function getDatabase() {
+      var MongoClient = require('mongodb').MongoClient;
+      MongoClient.connect('mongodb://localhost:27017/demoDb', function(err, db) {
+          if (err) {
+              console.error('failed to connect to database:', err);
+          } else {
+              getCollection(db);
+          }
+      });
+  }</code>
+</pre>
+<a href="https://github.com/Jalalhejazi/node-step-by-step/blob/step17_SPA_mongo_cloud/server.js">
+  step17_SPA_mongo_cloud
+</a>
+<br>
 
 
 
