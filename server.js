@@ -42,7 +42,7 @@ app.use(function(req, res, next) {
 
     res.status(err.status || 404);
 
-        res.end( '/postnummer/1000/dage/:{2,9,14}/ ');
+        res.end( '/postnummer/:1000/dage/:{2,9,14}/ ');
 
     next(err);
 });
