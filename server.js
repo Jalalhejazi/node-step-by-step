@@ -34,6 +34,21 @@ app.get('/postnummer/:postnr/dage/:dage/', function(req, res) {
     byvejr.getGif(res);
 });
 
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+
+    res.status(err.status || 404);
+
+        res.end( '/postnummer/1000/dage/:{2,9,14}/ ');
+
+    next(err);
+});
+
+
+
 server.listen(port, function() {
 
     console.log('http://localhost:' + port + '/postnummer/3400/dage/2/  \n');

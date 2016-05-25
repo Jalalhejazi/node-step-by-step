@@ -4,8 +4,9 @@ node-step-by-step
 building nodejs step by step 
 
 
-## Step13 (vejret i Danmark)
+##  vejret i Danmark
 
+	$ git checkout step13_vejret_i_Danmark_2016
 
     $ npm install
     
