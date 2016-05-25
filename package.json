@@ -1,7 +1,7 @@
 {
   "name": "vejret",
   "description": "WebApp vejret i Danmark",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "server.js",
   "port": "3000",
   "scripts": {
