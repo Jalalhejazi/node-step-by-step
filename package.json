@@ -6,9 +6,9 @@
   "port": "3000",
   "scripts": {
     "start": "supervisor server.js ",
-    "git-pull": "git pull origin step13_vejret_i_Danmark_2016",
+    "git-pull": "git pull origin step13_vejret_i_Danmark_2016_ES6",
     "git-commit": "git add --all && git commit -m 'update' ",
-    "git-push": "npm version patch && git push origin HEAD:step13_vejret_i_Danmark_2016 -u --force --follow-tags",
+    "git-push": "npm version patch && git push origin HEAD:step13_vejret_i_Danmark_2016_ES6 -u --force --follow-tags",
     "deploy": "npm run git-commit && npm run git-push "
   },
   "dependencies": {
