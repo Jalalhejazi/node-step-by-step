@@ -6,7 +6,7 @@ building nodejs step by step
 
 ##  vejret i Danmark
 
-	$ git checkout step13_vejret_i_Danmark_2016
+    $ git checkout step13_vejret_i_Danmark_2016_ES6
 
     $ npm install
     
