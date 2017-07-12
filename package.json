@@ -16,5 +16,17 @@
     "request": "^2.72.0",
     "supervisor": "^0.10.0"
   },
-  "private": "true"
+  "private": "true",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jalalhejazi/node-step-by-step.git"
+  },
+  "keywords": [],
+  "author": "Jalal.Hejazi <Jalal.Hejazi@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jalalhejazi/node-step-by-step/issues"
+  },
+  "homepage": "https://github.com/Jalalhejazi/node-step-by-step#readme"
 }
