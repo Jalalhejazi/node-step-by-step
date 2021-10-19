@@ -1,7 +1,10 @@
-node-step-by-step
+  This project is not maintained anymore (Legacy Code)
 =================
 
-# https://jalalhejazi.github.io/node-step-by-step/
+
+node-step-by-step (Year 2014)
+
+- https://jalalhejazi.github.io/node-step-by-step/
 
 building nodejs step by step (building chat server and later client )
 
